@@ -1,4 +1,4 @@
-import { defineNuxtModule } from "@nuxt/kit";
+import { defineNuxtModule, createResolver } from "@nuxt/kit";
 
 import { join } from "pathe";
 
@@ -8,6 +8,11 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "@tailplate/ui",
     configKey: "tailplate",
+  },
+  setup(options, nuxt) {
+    const { resolve } = createResolver(import.meta.url);
+
+    nuxt.options.css.push(resolve("./runtime/assets/css/main.css"));
   },
   hooks: {
     "components:dirs": (dirs) => {
