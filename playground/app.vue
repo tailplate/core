@@ -1,8 +1,7 @@
 <template>
   <div>
-    Nuxt module playground!
+    <t-large-button>Hello world</t-large-button>
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
