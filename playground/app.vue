@@ -1,6 +1,6 @@
 <template>
   <div>
-    <t-large-button>Hello world</t-large-button>
+    <t-classic-button> Submit </t-classic-button>
   </div>
 </template>
 
