@@ -25,12 +25,13 @@ const isDark = () => (props.dark === null ? $dark : props.dark);
 <template>
   <div :class="isDark() ? 'dark' : ''">
     <button
-      class="m-1 rounded-md border px-4 py-2 shadow duration-100 active:scale-95 active:shadow-none"
+      class="m-1 rounded-sm border px-2 py-1 text-xs shadow-sm duration-100 active:scale-95 active:shadow-none"
       :class="[
         $color.bg.primary,
         $color.text.primary,
         $color.border.primary,
         $color.bg.active,
+        tclass,
       ]"
     >
       <slot />

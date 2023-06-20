@@ -6,6 +6,7 @@
     <t-classic-button :dark="state.dark" @click="darkMode">
       Dark Mode
     </t-classic-button>
+    <t-small-button tclass="uppercase"> Small Button </t-small-button>
   </div>
 </template>
 

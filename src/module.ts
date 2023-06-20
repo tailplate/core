@@ -4,6 +4,7 @@ import { join } from "pathe";
 
 export interface ModuleOptions {
   color: String;
+  dark: Boolean;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -12,7 +13,8 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: "tailplate",
   },
   defaults: {
-    color: "blue",
+    color: "base",
+    dark: true,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
@@ -23,6 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.runtimeConfig.public.tailplate,
       {
         color: options.color,
+        dark: options.dark,
       }
     );
 

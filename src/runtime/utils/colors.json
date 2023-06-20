@@ -1,7 +1,7 @@
 {
   "base": {
     "text": {
-      "primary": "text-black dark:text-white",
+      "primary": "text-slate-800 dark:text-white",
       "secondary": "text-slate-500 dark:text-slate-300"
     },
     "bg": {
