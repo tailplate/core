@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
-  modules: ["../src/module"],
+  modules: ["../src/module", "@nuxtjs/tailwindcss"],
   tailplate: {
-    color: "red",
+    color: "base",
   },
 });

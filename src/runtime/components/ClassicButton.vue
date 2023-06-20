@@ -8,14 +8,25 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  dark: {
+    type: Boolean,
+    default: true,
+  },
 });
 </script>
 
 <template>
-  <button
-    class="m-1 rounded-sm px-4 py-2 text-white shadow-md duration-100 focus:shadow-none active:scale-95 active:shadow-none"
-    :class="[$color.bg.primary]"
-  >
-    <slot />
-  </button>
+  <div :class="dark ? 'dark' : ''">
+    <button
+      class="m-1 rounded-md border px-4 py-2 shadow-md duration-100 active:scale-95 active:shadow-none"
+      :class="[
+        $color.bg.primary,
+        $color.text.primary,
+        $color.border.primary,
+        $color.bg.active,
+      ]"
+    >
+      <slot />
+    </button>
+  </div>
 </template>
