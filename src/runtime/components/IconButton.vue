@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
 
-const { $color } = useNuxtApp();
-const { $dark } = useNuxtApp();
+const { $color, $dark } = useNuxtApp();
 
 const props = defineProps({
   outline: {
@@ -25,7 +24,7 @@ const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 <template>
   <div :class="isDark() ? 'dark' : ''">
     <button
-      class="rounded-sm border px-2 py-1 text-xs shadow-sm duration-100 active:scale-95 active:shadow-none"
+      class="flex items-center justify-center rounded-md border p-2 shadow duration-100 active:scale-95 active:shadow-none"
       :class="[
         $color?.bg?.primary,
         $color?.text?.primary,

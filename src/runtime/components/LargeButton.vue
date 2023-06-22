@@ -25,7 +25,7 @@ const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 <template>
   <div :class="isDark() ? 'dark' : ''">
     <button
-      class="rounded-sm border px-2 py-1 text-xs shadow-sm duration-100 active:scale-95 active:shadow-none"
+      class="rounded-md border px-4 py-2 text-lg shadow-sm duration-100 active:scale-95 active:shadow-none"
       :class="[
         $color?.bg?.primary,
         $color?.text?.primary,

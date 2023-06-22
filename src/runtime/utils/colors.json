@@ -17,7 +17,7 @@
   },
   "blue": {
     "text": {
-      "primary": "text-blue-500",
+      "primary": "text-slate-100",
       "secondary": "text-blue-700"
     },
     "bg": {
@@ -25,17 +25,42 @@
       "secondary": "bg-blue-700",
       "active": "active:bg-blue-700"
     },
-    "shadow": {}
+    "shadow": {},
+    "border": {
+      "primary": "border-blue-500 ",
+      "secondary": "text-slate-500 dark:text-slate-300"
+    }
+  },
+  "orange": {
+    "text": {
+      "primary": "text-slate-100",
+      "secondary": "text-red-700"
+    },
+    "bg": {
+      "primary": "bg-orange-500",
+      "secondary": "bg-orange-700",
+      "active": "active:bg-orange-700"
+    },
+    "shadow": {},
+    "border": {
+      "primary": "border-orange-500 ",
+      "secondary": "text-slate-500 dark:text-slate-300"
+    }
   },
   "red": {
     "text": {
-      "primary": "text-red-500",
+      "primary": "text-slate-100",
       "secondary": "text-red-700"
     },
     "bg": {
       "primary": "bg-red-500",
-      "secondary": "bg-red-700"
+      "secondary": "bg-red-700",
+      "active": "active:bg-red-700"
     },
-    "shadow": {}
+    "shadow": {},
+    "border": {
+      "primary": "border-red-500 ",
+      "secondary": "text-slate-500 dark:text-slate-300"
+    }
   }
 }
