@@ -27,7 +27,7 @@ const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
       class="flex items-center justify-center rounded-md border p-2 shadow duration-100 active:scale-95 active:shadow-none"
       :class="[
         $color?.bg?.primary,
-        $color?.text?.primary,
+        $color?.text?.base,
         $color?.border?.primary,
         $color?.bg?.active,
         props?.tclass,

@@ -1,16 +1,29 @@
 type Color = {
   text?: {
     primary?: String;
+    base?: String;
+    light?: String;
+    hover?: String;
     secondary?: String;
   };
   bg?: {
     primary?: String;
     secondary?: String;
     active?: String;
+    light?: String;
+    focus?: String;
+    base?: String;
   };
   border?: {
     primary?: String;
     secondary?: String;
+    focus?: String;
+  };
+  shadow?: {
+    hover?: String;
+  };
+  ring?: {
+    focus?: String;
   };
 };
 

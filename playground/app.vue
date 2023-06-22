@@ -38,27 +38,23 @@
     <div class="flex h-full flex-col items-center justify-center duration-100">
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <t-large-button :dark="state.dark"> Large </t-large-button>
+          <t-button :dark="state.dark"> Filled </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-classic-button warning danger :dark="state.dark">
-            Button
-          </t-classic-button>
+          <t-button :dark="state.dark" variant="outlined"> Outlined </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-small-button :dark="state.dark" tclass="uppercase">
-            Small
-          </t-small-button>
+          <t-button :dark="state.dark" variant="text"> Text </t-button>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from "vue";
 
-const state = reactive({ dark: true });
+const state = reactive({ dark: false });
 
 const darkMode = () => (state.dark = !state.dark);
 </script>

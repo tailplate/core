@@ -1,9 +1,4 @@
-import {
-  defineNuxtModule,
-  createResolver,
-  addPlugin,
-  addImports,
-} from "@nuxt/kit";
+import { defineNuxtModule, createResolver, addPlugin } from "@nuxt/kit";
 import { defu } from "defu";
 import { join } from "pathe";
 
@@ -35,11 +30,6 @@ export default defineNuxtModule<ModuleOptions>({
     );
 
     addPlugin(resolve("./runtime/plugin"));
-    addImports({
-      name: "useImport",
-      as: "useImport",
-      from: resolve("runtime/composables/useImport"),
-    });
   },
   hooks: {
     "components:dirs": (dirs) => {
