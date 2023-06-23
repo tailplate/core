@@ -9,10 +9,6 @@ const { $color, $dark } = useNuxtApp();
 const state = reactive({ specialColor: "" });
 
 const props = defineProps({
-  outline: {
-    type: Boolean,
-    default: false,
-  },
   variant: {
     type: String,
     default: "filled",
@@ -23,6 +19,10 @@ const props = defineProps({
   dark: {
     type: Boolean,
     default: null,
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
   },
   color: {
     type: String,
@@ -60,7 +60,7 @@ const checkVariants = (variant: string) => {
     return [
       colorSchema?.text?.primary,
       props.className,
-      colorSchema?.text?.hover,
+      colorSchema?.bg?.hover,
     ];
   } else {
     return [
@@ -77,7 +77,9 @@ const checkVariants = (variant: string) => {
   }
 };
 
-const classes = checkVariants(props.variant);
+let classes = checkVariants(props.variant);
+
+props.rounded ? (classes = [...classes, "rounded-full"]) : "";
 </script>
 
 <template>

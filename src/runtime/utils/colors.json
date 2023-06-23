@@ -28,6 +28,7 @@
       "base": "bg-white dark:bg-slate-900",
       "secondary": "bg-blue-700",
       "light": "bg-blue-300",
+      "hover": "hover:bg-blue-100 dark:hover:bg-blue-900",
       "active": "active:bg-blue-400",
       "focus": "focus:bg-blue-400"
     },

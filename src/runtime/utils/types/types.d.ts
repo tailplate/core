@@ -13,6 +13,7 @@ type Color = {
     light?: String;
     focus?: String;
     base?: String;
+    hover?: String;
   };
   border?: {
     primary?: String;

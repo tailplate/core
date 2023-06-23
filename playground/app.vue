@@ -35,7 +35,9 @@
         />
       </svg>
     </t-icon-button>
-    <div class="flex h-full flex-col items-center justify-center duration-100">
+    <div
+      class="flex h-full flex-col items-center justify-center space-y-6 duration-100"
+    >
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
           <t-button :dark="state.dark"> Filled </t-button>
@@ -45,6 +47,19 @@
         </div>
         <div class="flex items-center justify-center">
           <t-button :dark="state.dark" variant="text"> Text </t-button>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <t-button rounded :dark="state.dark"> Filled </t-button>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button rounded :dark="state.dark" variant="outlined">
+            Outlined
+          </t-button>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button rounded :dark="state.dark" variant="text"> Text </t-button>
         </div>
       </div>
     </div>
