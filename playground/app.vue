@@ -62,6 +62,17 @@
           <t-button rounded :dark="state.dark" variant="text"> Text </t-button>
         </div>
       </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <t-button size="sm" :dark="state.dark"> Small </t-button>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button size="md" :dark="state.dark"> Base </t-button>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button size="lg" :dark="state.dark"> Large </t-button>
+        </div>
+      </div>
     </div>
   </section>
 </template>

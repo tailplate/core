@@ -16,11 +16,22 @@ const props = defineProps({
       return ["filled", "outlined", "text"].includes(value);
     },
   },
+  size: {
+    type: String,
+    default: "md",
+    validator(value: string) {
+      return ["sm", "md", "lg"].includes(value);
+    },
+  },
   dark: {
     type: Boolean,
     default: null,
   },
   rounded: {
+    type: Boolean,
+    default: false,
+  },
+  fullWidth: {
     type: Boolean,
     default: false,
   },
@@ -78,15 +89,20 @@ const checkVariants = (variant: string) => {
 };
 
 let classes = checkVariants(props.variant);
+let width: string;
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
+props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
+props.size === "md" ? (classes = [...classes, "px-4 py-2"]) : "";
+props.size === "lg" ? (classes = [...classes, "px-4 py-2 text-xl"]) : "";
+props.fullWidth ? (width = "w-full") : "";
 </script>
 
 <template>
-  <div :class="isDark() ? 'dark' : ''">
+  <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="rounded-md px-4 py-2 uppercase duration-100 focus:shadow-none active:shadow-none"
-      :class="classes"
+      class="rounded-md font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
+      :class="[classes, width]"
     >
       <slot />
     </button>
