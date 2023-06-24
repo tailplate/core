@@ -101,8 +101,8 @@ let groupRounded: string = "";
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
 props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
-props.size === "md" ? (classes = [...classes, "px-4 py-2"]) : "";
-props.size === "lg" ? (classes = [...classes, "px-4 py-2 text-xl"]) : "";
+props.size === "md" ? (classes = [...classes, "px-6 py-3 text-xs"]) : "";
+props.size === "lg" ? (classes = [...classes, "px-7 py-4 text-sm"]) : "";
 props.fullWidth ? (width = "w-full") : "";
 props.group ? "" : (groupRounded = "rounded-md");
 </script>
@@ -110,7 +110,7 @@ props.group ? "" : (groupRounded = "rounded-md");
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="flex items-center justify-center space-x-2 uppercase duration-100 focus:shadow-none active:shadow-none"
+      class="flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width, groupRounded]"
     >
       <slot />

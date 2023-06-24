@@ -34,7 +34,7 @@
       "focus": "focus:bg-blue-400"
     },
     "shadow": {
-      "hover": "hover:shadow-blue-300 dark:hover:shadow-blue-900"
+      "hover": "hover:shadow-blue-500/40 dark:hover:shadow-blue-900"
     },
     "border": {
       "primary": "border-blue-500",
@@ -45,7 +45,7 @@
       "focus": "focus:ring-4 ring-blue-300 dark:ring-blue-900"
     },
     "divide": {
-      "primary": "divide-blue-400"
+      "primary": "divide-blue-600"
     }
   }
 }

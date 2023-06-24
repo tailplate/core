@@ -9,20 +9,6 @@ const { $color, $dark } = useNuxtApp();
 const state = reactive({ specialColor: "" });
 
 const props = defineProps({
-  variant: {
-    type: String,
-    default: "filled",
-    validator(value: string) {
-      return ["filled", "outlined", "text"].includes(value);
-    },
-  },
-  size: {
-    type: String,
-    default: "md",
-    validator(value: string) {
-      return ["sm", "md", "lg"].includes(value);
-    },
-  },
   dark: {
     type: Boolean,
     default: null,
@@ -39,10 +25,6 @@ const props = defineProps({
     type: String,
     default: null,
   },
-  className: {
-    type: String,
-    default: "",
-  },
 });
 
 const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
@@ -56,54 +38,22 @@ if (props.color === null && state.specialColor === "") {
     : (colorSchema = json[props.color as keyof typeof json]);
 }
 
-const checkVariants = (variant: string) => {
-  if (variant === "outlined") {
-    return [
-      colorSchema?.bg?.base,
-      colorSchema?.text?.primary,
-      colorSchema?.border?.primary,
-      colorSchema?.border?.focus,
-      colorSchema?.ring?.focus,
-      "shadow border",
-      props.className,
-    ];
-  } else if (variant === "text") {
-    return [
-      colorSchema?.text?.primary,
-      props.className,
-      colorSchema?.bg?.hover,
-      colorSchema?.bg?.focusLight,
-    ];
-  } else {
-    return [
-      colorSchema?.bg?.primary,
-      colorSchema?.bg?.active,
-      colorSchema?.bg?.focus,
-      colorSchema?.text?.base,
-      colorSchema?.border?.primary,
-      colorSchema?.border?.focus,
-      colorSchema?.shadow?.hover,
-      colorSchema?.divide?.primary,
-      "hover:shadow-lg shadow border",
-      props.className,
-    ];
-  }
-};
-
-let classes = checkVariants(props.variant);
 let width: string;
+let isRounded: string;
 
-props.rounded ? (classes = [...classes, "rounded-full"]) : "";
-props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
-props.size === "md" ? (classes = [...classes, "px-4 py-2"]) : "";
-props.size === "lg" ? (classes = [...classes, "px-4 py-2 text-xl"]) : "";
+props.rounded ? (isRounded = "rounded-full") : (isRounded = "rounded-md");
 props.fullWidth ? (width = "w-full") : "";
 </script>
 
 <template>
   <div
-    class="flex divide-x overflow-hidden rounded-md"
-    :class="[isDark() ? 'dark' : '', width, colorSchema?.divide?.primary]"
+    class="flex h-full divide-x overflow-hidden"
+    :class="[
+      isDark() ? 'dark' : '',
+      width,
+      colorSchema?.divide?.primary,
+      isRounded,
+    ]"
   >
     <slot></slot>
   </div>

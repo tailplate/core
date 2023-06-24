@@ -101,7 +101,7 @@ props.group ? "" : (groupRounded = "rounded-md");
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="flex items-center justify-center p-2 font-semibold duration-100 focus:shadow-none active:shadow-none"
+      class="flex items-center justify-center p-3 font-semibold duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width, groupRounded]"
     >
       <slot />
