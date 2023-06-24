@@ -1,37 +1,99 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
+import { reactive } from "vue";
+import { Color } from "../utils/types/types";
+import json from "../utils/colors.json";
 
 const { $color, $dark } = useNuxtApp();
 
+const state = reactive({ specialColor: "" });
+
 const props = defineProps({
-  outline: {
-    type: Boolean,
-    default: false,
+  variant: {
+    type: String,
+    default: "filled",
+    validator(value: string) {
+      return ["filled", "outlined", "text"].includes(value);
+    },
   },
   dark: {
     type: Boolean,
     default: null,
   },
-  tclass: {
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+  fullWidth: {
+    type: Boolean,
+    default: false,
+  },
+  color: {
+    type: String,
+    default: null,
+  },
+  className: {
     type: String,
     default: "",
   },
 });
 
 const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
+let colorSchema: Color;
+
+if (props.color === null && state.specialColor === "") {
+  colorSchema = $color;
+} else {
+  state.specialColor !== ""
+    ? (colorSchema = json[state.specialColor as keyof typeof json])
+    : (colorSchema = json[props.color as keyof typeof json]);
+}
+
+const checkVariants = (variant: string) => {
+  if (variant === "outlined") {
+    return [
+      colorSchema?.bg?.base,
+      colorSchema?.text?.primary,
+      colorSchema?.border?.primary,
+      colorSchema?.border?.focus,
+      colorSchema?.ring?.focus,
+      "shadow border",
+      props.className,
+    ];
+  } else if (variant === "text") {
+    return [
+      colorSchema?.text?.primary,
+      props.className,
+      colorSchema?.bg?.hover,
+      colorSchema?.bg?.focusLight,
+    ];
+  } else {
+    return [
+      colorSchema?.bg?.primary,
+      colorSchema?.bg?.active,
+      colorSchema?.bg?.focus,
+      colorSchema?.text?.base,
+      colorSchema?.border?.primary,
+      colorSchema?.border?.focus,
+      colorSchema?.shadow?.hover,
+      "hover:shadow-lg shadow border",
+      props.className,
+    ];
+  }
+};
+
+let classes = checkVariants(props.variant);
+let width: string;
+
+props.rounded ? (classes = [...classes, "rounded-full"]) : "";
+props.fullWidth ? (width = "w-full") : "";
 </script>
 
 <template>
-  <div :class="isDark() ? 'dark' : ''">
+  <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="flex items-center justify-center rounded-md border p-2 shadow duration-100 active:scale-95 active:shadow-none"
-      :class="[
-        $color?.bg?.primary,
-        $color?.text?.base,
-        $color?.border?.primary,
-        $color?.bg?.active,
-        props?.tclass,
-      ]"
+      class="flex items-center justify-center rounded-md p-2 font-semibold duration-100 focus:shadow-none active:shadow-none"
+      :class="[classes, width]"
     >
       <slot />
     </button>

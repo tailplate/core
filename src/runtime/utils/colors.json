@@ -29,6 +29,7 @@
       "secondary": "bg-blue-700",
       "light": "bg-blue-300",
       "hover": "hover:bg-blue-100 dark:hover:bg-blue-900",
+      "focusLight": "focus:bg-blue-100 dark:focus:bg-blue-900",
       "active": "active:bg-blue-400",
       "focus": "focus:bg-blue-400"
     },
@@ -42,38 +43,6 @@
     },
     "ring": {
       "focus": "focus:ring-4 ring-blue-300 dark:ring-blue-900"
-    }
-  },
-  "orange": {
-    "text": {
-      "primary": "text-slate-100",
-      "secondary": "text-red-700"
-    },
-    "bg": {
-      "primary": "bg-orange-500",
-      "secondary": "bg-orange-700",
-      "active": "active:bg-orange-700"
-    },
-    "shadow": {},
-    "border": {
-      "primary": "border-orange-500 ",
-      "secondary": "text-slate-500 dark:text-slate-300"
-    }
-  },
-  "red": {
-    "text": {
-      "primary": "text-slate-100",
-      "secondary": "text-red-700"
-    },
-    "bg": {
-      "primary": "bg-red-500",
-      "secondary": "bg-red-700",
-      "active": "active:bg-red-700"
-    },
-    "shadow": {},
-    "border": {
-      "primary": "border-red-500 ",
-      "secondary": "text-slate-500 dark:text-slate-300"
     }
   }
 }

@@ -72,6 +72,7 @@ const checkVariants = (variant: string) => {
       colorSchema?.text?.primary,
       props.className,
       colorSchema?.bg?.hover,
+      colorSchema?.bg?.focusLight,
     ];
   } else {
     return [
@@ -101,7 +102,7 @@ props.fullWidth ? (width = "w-full") : "";
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="rounded-md font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
+      class="flex items-center justify-center space-x-2 rounded-md font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width]"
     >
       <slot />

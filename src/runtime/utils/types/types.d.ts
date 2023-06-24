@@ -10,6 +10,7 @@ type Color = {
     primary?: String;
     secondary?: String;
     active?: String;
+    focusLight?: String;
     light?: String;
     focus?: String;
     base?: String;
