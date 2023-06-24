@@ -31,10 +31,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  group: {
-    type: Boolean,
-    default: false,
-  },
   fullWidth: {
     type: Boolean,
     default: false,
@@ -63,11 +59,12 @@ if (props.color === null && state.specialColor === "") {
 const checkVariants = (variant: string) => {
   if (variant === "outlined") {
     return [
+      colorSchema?.bg?.base,
       colorSchema?.text?.primary,
-      props.group ? "" : colorSchema?.border?.primary,
-      props.group ? "" : colorSchema?.border?.focus,
+      colorSchema?.border?.primary,
+      colorSchema?.border?.focus,
       colorSchema?.ring?.focus,
-      props.group ? "" : "border",
+      "shadow border",
       props.className,
     ];
   } else if (variant === "text") {
@@ -83,13 +80,11 @@ const checkVariants = (variant: string) => {
       colorSchema?.bg?.active,
       colorSchema?.bg?.focus,
       colorSchema?.text?.base,
-      props.group ? "" : colorSchema?.border?.primary,
-      props.group ? "" : colorSchema?.border?.focus,
+      colorSchema?.border?.primary,
+      colorSchema?.border?.focus,
       colorSchema?.shadow?.hover,
-      " ",
-      props.group
-        ? "hover:shadow-[0_20px_15px_-15px_rgba(0,0,0,0.1)]"
-        : "border hover:shadow-lg ",
+      colorSchema?.divide?.primary,
+      "hover:shadow-lg shadow border",
       props.className,
     ];
   }
@@ -97,23 +92,19 @@ const checkVariants = (variant: string) => {
 
 let classes = checkVariants(props.variant);
 let width: string;
-let groupRounded: string = "";
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
 props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
 props.size === "md" ? (classes = [...classes, "px-4 py-2"]) : "";
 props.size === "lg" ? (classes = [...classes, "px-4 py-2 text-xl"]) : "";
 props.fullWidth ? (width = "w-full") : "";
-props.group ? "" : (groupRounded = "rounded-md");
 </script>
 
 <template>
-  <div :class="[isDark() ? 'dark' : '', width]">
-    <button
-      class="flex items-center justify-center space-x-2 uppercase duration-100 focus:shadow-none active:shadow-none"
-      :class="[classes, width, groupRounded]"
-    >
-      <slot />
-    </button>
+  <div
+    class="flex divide-x overflow-hidden rounded-md"
+    :class="[isDark() ? 'dark' : '', width, colorSchema?.divide?.primary]"
+  >
+    <slot></slot>
   </div>
 </template>

@@ -27,6 +27,9 @@ type Color = {
   ring?: {
     focus?: String;
   };
+  divide?: {
+    primary?: String;
+  };
 };
 
 declare module "#app" {

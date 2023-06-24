@@ -43,6 +43,9 @@
     },
     "ring": {
       "focus": "focus:ring-4 ring-blue-300 dark:ring-blue-900"
+    },
+    "divide": {
+      "primary": "divide-blue-400"
     }
   }
 }

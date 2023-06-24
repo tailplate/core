@@ -24,6 +24,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  group: {
+    type: Boolean,
+    default: false,
+  },
   fullWidth: {
     type: Boolean,
     default: false,
@@ -52,12 +56,11 @@ if (props.color === null && state.specialColor === "") {
 const checkVariants = (variant: string) => {
   if (variant === "outlined") {
     return [
-      colorSchema?.bg?.base,
       colorSchema?.text?.primary,
-      colorSchema?.border?.primary,
-      colorSchema?.border?.focus,
+      props.group ? "" : colorSchema?.border?.primary,
+      props.group ? "" : colorSchema?.border?.focus,
       colorSchema?.ring?.focus,
-      "shadow border",
+      props.group ? "" : "border",
       props.className,
     ];
   } else if (variant === "text") {
@@ -73,10 +76,14 @@ const checkVariants = (variant: string) => {
       colorSchema?.bg?.active,
       colorSchema?.bg?.focus,
       colorSchema?.text?.base,
-      colorSchema?.border?.primary,
-      colorSchema?.border?.focus,
+      props.group ? "" : colorSchema?.border?.primary,
+      props.group ? "" : colorSchema?.border?.focus,
       colorSchema?.shadow?.hover,
-      "hover:shadow-lg shadow border",
+      colorSchema?.shadow?.hover,
+      " ",
+      props.group
+        ? "hover:shadow-[0_20px_15px_-15px_rgba(0,0,0,0.1)]"
+        : "border hover:shadow-lg ",
       props.className,
     ];
   }
@@ -84,16 +91,18 @@ const checkVariants = (variant: string) => {
 
 let classes = checkVariants(props.variant);
 let width: string;
+let groupRounded: string = "";
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
 props.fullWidth ? (width = "w-full") : "";
+props.group ? "" : (groupRounded = "rounded-md");
 </script>
 
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="flex items-center justify-center rounded-md p-2 font-semibold duration-100 focus:shadow-none active:shadow-none"
-      :class="[classes, width]"
+      class="flex items-center justify-center p-2 font-semibold duration-100 focus:shadow-none active:shadow-none"
+      :class="[classes, width, groupRounded]"
     >
       <slot />
     </button>
