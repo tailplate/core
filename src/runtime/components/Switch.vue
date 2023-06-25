@@ -6,9 +6,9 @@ import json from "../utils/colors.json";
 
 const emit = defineEmits(["switched"]);
 
-const { $dark } = useNuxtApp();
+const { $dark, $color } = useNuxtApp();
 
-const state = reactive({ switched: false });
+const state = reactive({ switched: false, specialColor: "" });
 
 const props = defineProps({
   variant: {
@@ -36,10 +36,6 @@ const props = defineProps({
   id: {
     type: String,
   },
-  danger: {
-    type: Boolean,
-    default: false,
-  },
   active: {
     type: Boolean,
     default: false,
@@ -54,7 +50,16 @@ const props = defineProps({
   },
 });
 
-const colorSchema: Color = json["base"];
+let colorSchema: Color;
+
+if (props.color === null && state.specialColor === "") {
+  colorSchema = $color;
+} else {
+  state.specialColor !== ""
+    ? (colorSchema = json[state.specialColor as keyof typeof json])
+    : (colorSchema = json[props.color as keyof typeof json]);
+}
+
 const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 
 let classes: Array<String> = [];
@@ -69,28 +74,46 @@ const switchButton = () => {
   if (!props.disabled) state.switched = !state.switched;
   if (!props.disabled) emit("switched", { bool: state.switched, id: props.id });
 };
+
+const applyColor = () => {
+  if (state.switched) {
+    return colorSchema?.bg?.primary;
+  } else if (isDark() && !props.disabled) {
+    return "bg-slate-600";
+  } else if (isDark() && props.disabled) {
+    return "bg-slate-700";
+  } else {
+    return "bg-slate-300";
+  }
+};
 </script>
 
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
-    <button
-      @click="switchButton()"
-      class="flex w-12 items-center justify-between rounded-full font-semibold uppercase shadow-inner duration-100 focus:shadow-none active:shadow-none"
-      :class="[
-        classes,
-        state.switched && !props.danger
-          ? colorSchema?.bg?.success
-          : 'bg-slate-300',
-        state.switched && props.danger
-          ? colorSchema?.bg?.danger
-          : 'bg-slate-300',
-        props.disabled ? ' cursor-not-allowed' : '',
-      ]"
-    >
+    <button @click="switchButton()" class="flex items-center space-x-4">
       <div
-        class="h-6 w-6 rounded-full border bg-slate-50 duration-100"
-        :class="state.switched ? 'translate-x-full' : ''"
-      ></div>
+        class="flex w-10 items-center justify-between rounded-full font-semibold uppercase shadow-inner duration-100 focus:shadow-none active:shadow-none"
+        :class="[
+          classes,
+          applyColor(),
+          props.disabled ? ' cursor-not-allowed ' : '',
+        ]"
+      >
+        <div
+          class="h-5 w-5 rounded-full duration-100"
+          :class="[
+            state.switched ? '0 translate-x-full' : '',
+            props.disabled && !isDark() ? 'bg-white opacity-70' : 'bg-white',
+            props.disabled && isDark() && !props.active
+              ? 'bg-slate-500 opacity-70'
+              : 'bg-white',
+            props.disabled && isDark() && props.active
+              ? 'bg-white opacity-70'
+              : 'bg-white',
+          ]"
+        ></div>
+      </div>
+      <slot />
     </button>
   </div>
 </template>

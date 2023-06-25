@@ -268,21 +268,27 @@ const callback = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <tSwitch @switched="callback"></tSwitch>
-        <tSwitch disabled></tSwitch>
+        <tSwitch :dark="state.dark" disabled></tSwitch>
         <tSwitch active></tSwitch>
         <tSwitch danger></tSwitch>
         <tSwitch danger active></tSwitch>
-        <tSwitch danger active disabled></tSwitch>
+        <tSwitch danger active disabled :dark="state.dark"></tSwitch>
         <div class="flex flex-col space-y-4">
           <div
             v-for="item in state.switchedMode"
             :key="item.name"
             class="flex space-x-4"
           >
-            <tSwitch @switched="callback" :id="item.id"></tSwitch>
-            <p :class="item.done ? ' text-slate-400 line-through' : ''">
-              {{ item.name }}
-            </p>
+            <tSwitch :dark="state.dark" @switched="callback" :id="item.id">
+              <p
+                :class="[
+                  item.done ? ' text-slate-400 line-through' : '',
+                  state.dark ? 'text-slate-300' : 'text-slate-800',
+                ]"
+              >
+                {{ item.name }}
+              </p></tSwitch
+            >
           </div>
         </div>
       </div>
