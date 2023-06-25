@@ -64,10 +64,12 @@ const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 
 let classes: Array<String> = [];
 let width: string;
+let sizeParent: string;
+let sizeChild: string;
 
-props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
-props.size === "md" ? (classes = [...classes, " text-xs"]) : "";
-props.size === "lg" ? (classes = [...classes, "px-7 py-4 text-sm"]) : "";
+props.size === "sm" ? [(sizeChild = "w-4 h-4"), (sizeParent = "w-8")] : "";
+props.size === "md" ? [(sizeChild = "w-5 h-5"), (sizeParent = "w-10")] : "";
+props.size === "lg" ? [(sizeChild = "w-6 h-6"), (sizeParent = "w-12")] : "";
 props.active ? (state.switched = true) : "";
 
 const switchButton = () => {
@@ -92,16 +94,18 @@ const applyColor = () => {
   <div :class="[isDark() ? 'dark' : '', width]">
     <button @click="switchButton()" class="flex items-center space-x-4">
       <div
-        class="flex w-10 items-center justify-between rounded-full font-semibold uppercase shadow-inner duration-100 focus:shadow-none active:shadow-none"
+        class="flex items-center justify-between rounded-full font-semibold uppercase shadow-inner duration-100 focus:shadow-none active:shadow-none"
         :class="[
           classes,
           applyColor(),
           props.disabled ? ' cursor-not-allowed ' : '',
+          sizeParent,
         ]"
       >
         <div
-          class="h-5 w-5 rounded-full duration-100"
+          class="rounded-full duration-100"
           :class="[
+            sizeChild,
             state.switched ? '0 translate-x-full' : '',
             props.disabled && !isDark() ? 'bg-white opacity-70' : 'bg-white',
             props.disabled && isDark() && !props.active
