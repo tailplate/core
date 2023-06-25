@@ -97,21 +97,21 @@ const checkVariants = (variant: string) => {
 
 let classes = checkVariants(props.variant);
 let width: string;
-let groupRounded: string = "";
+let groupClass: string = "";
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
 props.size === "sm" ? (classes = [...classes, "px-4 py-2 text-xs "]) : "";
 props.size === "md" ? (classes = [...classes, "px-6 py-3 text-xs"]) : "";
 props.size === "lg" ? (classes = [...classes, "px-7 py-4 text-sm"]) : "";
 props.fullWidth ? (width = "w-full") : "";
-props.group ? "" : (groupRounded = "rounded-md");
+props.group ? "" : (groupClass = "rounded-md active:scale-95 ");
 </script>
 
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
       class="flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
-      :class="[classes, width, groupRounded]"
+      :class="[classes, width, groupClass]"
     >
       <slot />
     </button>

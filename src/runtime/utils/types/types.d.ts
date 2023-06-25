@@ -11,10 +11,13 @@ type Color = {
     secondary?: String;
     active?: String;
     focusLight?: String;
+    focusSuccess?: String;
     light?: String;
     focus?: String;
     base?: String;
     hover?: String;
+    success?: String;
+    danger?: String;
   };
   border?: {
     primary?: String;

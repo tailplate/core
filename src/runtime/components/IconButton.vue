@@ -16,6 +16,13 @@ const props = defineProps({
       return ["filled", "outlined", "text"].includes(value);
     },
   },
+  size: {
+    type: String,
+    default: "md",
+    validator(value: string) {
+      return ["sm", "md", "lg"].includes(value);
+    },
+  },
   dark: {
     type: Boolean,
     default: null,
@@ -79,7 +86,6 @@ const checkVariants = (variant: string) => {
       props.group ? "" : colorSchema?.border?.primary,
       props.group ? "" : colorSchema?.border?.focus,
       colorSchema?.shadow?.hover,
-      colorSchema?.shadow?.hover,
       " ",
       props.group
         ? "hover:shadow-[0_20px_15px_-15px_rgba(0,0,0,0.1)]"
@@ -91,18 +97,21 @@ const checkVariants = (variant: string) => {
 
 let classes = checkVariants(props.variant);
 let width: string;
-let groupRounded: string = "";
+let groupClass: string = "";
 
 props.rounded ? (classes = [...classes, "rounded-full"]) : "";
+props.size === "sm" ? (classes = [...classes, "p-1 text-xs "]) : "";
+props.size === "md" ? (classes = [...classes, "p-2 text-xs"]) : "";
+props.size === "lg" ? (classes = [...classes, "p-3 text-sm"]) : "";
 props.fullWidth ? (width = "w-full") : "";
-props.group ? "" : (groupRounded = "rounded-md");
+props.group ? "" : (groupClass = "rounded-md active:scale-95 ");
 </script>
 
 <template>
   <div :class="[isDark() ? 'dark' : '', width]">
     <button
-      class="flex items-center justify-center p-3 font-semibold duration-100 focus:shadow-none active:shadow-none"
-      :class="[classes, width, groupRounded]"
+      class="flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
+      :class="[classes, width, groupClass]"
     >
       <slot />
     </button>

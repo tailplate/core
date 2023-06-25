@@ -7,7 +7,9 @@
     "bg": {
       "primary": "bg-white dark:bg-slate-800",
       "secondary": "bg-blue-700",
-      "active": "active:bg-gray-200 dark:active:bg-slate-700"
+      "active": "active:bg-gray-200 dark:active:bg-slate-700",
+      "success": "bg-green-400",
+      "danger": "bg-red-400"
     },
     "shadow": {},
     "border": {
@@ -31,7 +33,10 @@
       "hover": "hover:bg-blue-100 dark:hover:bg-blue-900",
       "focusLight": "focus:bg-blue-100 dark:focus:bg-blue-900",
       "active": "active:bg-blue-400",
-      "focus": "focus:bg-blue-400"
+      "focus": "focus:bg-blue-400",
+      "focusSuccess": "focus:bg-green-400",
+      "success": "bg-green-400",
+      "danger": "bg-red-400"
     },
     "shadow": {
       "hover": "hover:shadow-blue-500/40 dark:hover:shadow-blue-900"

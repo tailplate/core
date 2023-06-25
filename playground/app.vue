@@ -1,3 +1,39 @@
+<script setup lang="ts">
+import { reactive, ref } from "vue";
+
+const state = reactive({
+  dark: false,
+  switchedMode: {
+    banana: {
+      name: "Banana 🍌",
+      done: false,
+      id: "banana",
+    },
+    avocado: {
+      name: "Avocado 🥑",
+      done: false,
+      id: "avocado",
+    },
+    melon: {
+      name: "Melon 🍈",
+      done: false,
+      id: "melon",
+    },
+    apple: {
+      name: "Apple 🍎",
+      done: false,
+      id: "apple",
+    },
+  },
+});
+
+const darkMode = () => (state.dark = !state.dark);
+
+const callback = (obj: { id: string; bool: boolean }) => {
+  state.switchedMode[obj.id as keyof typeof state.switchedMode].done = obj.bool;
+};
+</script>
+
 <template>
   <section
     class="h-screen p-6"
@@ -182,7 +218,7 @@
 
         <div class="flex items-center justify-center">
           <tGroupButton :dark="state.dark">
-            <t-icon-button group size="sm">
+            <t-icon-button group>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -197,7 +233,7 @@
                   d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
                 /></svg
             ></t-icon-button>
-            <t-icon-button group size="sm">
+            <t-icon-button group>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -212,7 +248,7 @@
                   d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
                 /></svg
             ></t-icon-button>
-            <tIconButton group size="sm">
+            <tIconButton group>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -230,14 +266,26 @@
           </tGroupButton>
         </div>
       </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <tSwitch @switched="callback"></tSwitch>
+        <tSwitch disabled></tSwitch>
+        <tSwitch active></tSwitch>
+        <tSwitch danger></tSwitch>
+        <tSwitch danger active></tSwitch>
+        <tSwitch danger active disabled></tSwitch>
+        <div class="flex flex-col space-y-4">
+          <div
+            v-for="item in state.switchedMode"
+            :key="item.name"
+            class="flex space-x-4"
+          >
+            <tSwitch @switched="callback" :id="item.id"></tSwitch>
+            <p :class="item.done ? ' text-slate-400 line-through' : ''">
+              {{ item.name }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { reactive } from "vue";
-
-const state = reactive({ dark: false });
-
-const darkMode = () => (state.dark = !state.dark);
-</script>
