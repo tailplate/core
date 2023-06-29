@@ -55,5 +55,10 @@
     "divide": {
       "primary": "divide-blue-600"
     }
+  },
+  "red": {
+    "bg": {
+      "primary": "bg-red-500"
+    }
   }
 }

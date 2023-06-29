@@ -63,10 +63,14 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
 
 <template>
   <section
-    class="min-h-screen p-6"
+    class="relative min-h-screen p-6"
     :class="state.dark ? 'bg-slate-900' : 'bg-slate-100'"
   >
-    <t-icon-button :dark="state.dark" @click="darkMode" className="ml-auto">
+    <t-icon-button
+      :dark="state.dark"
+      @click="darkMode"
+      className="ml-auto top-6 right-6 fixed"
+    >
       <svg
         v-if="!state.dark"
         xmlns="http://www.w3.org/2000/svg"
@@ -366,6 +370,26 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </tCheckbox>
         </div>
         <div></div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>badge</p>
+            <tBadge></tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>number</p>
+            <tBadge slot>99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>border</p>
+            <tBadge :dark="state.dark" slot border>99</tBadge>
+          </TButton>
+        </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>
