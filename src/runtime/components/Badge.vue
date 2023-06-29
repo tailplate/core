@@ -25,6 +25,10 @@ const props = defineProps({
     type: String,
     default: "red",
   },
+  position: {
+    type: String,
+    default: "top-right",
+  },
   className: {
     type: String,
     default: "",
@@ -41,14 +45,39 @@ if (props.color === null && state.specialColor === "") {
     ? (colorSchema = json[state.specialColor as keyof typeof json])
     : (colorSchema = json[props.color as keyof typeof json]);
 }
+
+const position = (slot: Boolean, position: String) => {
+  if (slot) {
+    if (position === "top-right") {
+      return "right-1 -top-2";
+    } else if (position === "top-left") {
+      return "-left-5 -top-2";
+    } else if (position === "bottom-left") {
+      return "-left-5 bottom-1";
+    } else if (position === "bottom-right") {
+      return "right-1 bottom-1";
+    }
+  } else {
+    if (position === "top-right") {
+      return "-right-1 -top-1";
+    } else if (position === "top-left") {
+      return "-left-4 -top-1";
+    } else if (position === "bottom-left") {
+      return "-left-4 -bottom-1";
+    } else if (position === "bottom-right") {
+      return "-right-1 -bottom-1";
+    }
+  }
+};
 </script>
 
 <template>
   <div
-    class="absolute z-50"
+    class="absolute z-50 flex h-3 w-3"
     :class="[
       isDark() ? 'dark' : '',
-      props.slot ? '-right-2 -top-2' : '-right-1 -top-1',
+      position(props.slot, props.position),
+      props.slot ? 'mx-2' : '',
     ]"
   >
     <div

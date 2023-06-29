@@ -391,6 +391,58 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </TButton>
         </div>
       </div>
+      <div class="grid grid-cols-4 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Top Left</p>
+            <tBadge slot position="top-left" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Bot left</p>
+            <tBadge slot position="bottom-left" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Bot Right</p>
+            <tBadge slot position="bottom-right" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Top Right</p>
+            <tBadge slot position="top-right" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Top Left</p>
+            <tBadge position="top-left" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Bot left</p>
+            <tBadge position="bottom-left" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Bot Right</p>
+            <tBadge position="bottom-right" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+        <div class="flex items-center justify-center">
+          <TButton>
+            <p>Top Right</p>
+            <tBadge position="top-right" :dark="state.dark">99</tBadge>
+          </TButton>
+        </div>
+      </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>
       </div>
