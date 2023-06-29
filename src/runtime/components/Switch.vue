@@ -98,7 +98,7 @@ const applyColor = () => {
         :class="[
           classes,
           applyColor(),
-          props.disabled ? ' cursor-not-allowed ' : '',
+          props.disabled ? ' cursor-not-allowed opacity-40' : '',
           sizeParent,
         ]"
       >
@@ -107,12 +107,8 @@ const applyColor = () => {
           :class="[
             sizeChild,
             state.switched ? '0 translate-x-full' : '',
-            props.disabled && !isDark() ? 'bg-white opacity-70' : 'bg-white',
-            props.disabled && isDark() && !props.active
-              ? 'bg-slate-500 opacity-70'
-              : 'bg-white',
-            props.disabled && isDark() && props.active
-              ? 'bg-white opacity-70'
+            props.disabled && isDark()
+              ? 'border-2 bg-slate-200  shadow-inner '
               : 'bg-white',
           ]"
         ></div>

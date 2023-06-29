@@ -8,8 +8,6 @@ const emit = defineEmits(["toggled"]);
 
 const { $color, $dark } = useNuxtApp();
 
-const state = reactive({ specialColor: "", checkboxValue: false });
-
 const props = defineProps({
   dark: {
     type: Boolean,
@@ -36,6 +34,8 @@ const props = defineProps({
     default: "",
   },
 });
+
+const state = reactive({ specialColor: "", checkboxValue: props.active });
 
 const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
@@ -88,7 +88,7 @@ const groupHover = () => {
 <template>
   <div :class="[isDark() ? 'dark' : '']" class="group">
     <div
-      class="flex items-center space-x-1"
+      class="flex select-none items-center space-x-1"
       @click="props.disabled ? '' : toggle()"
       :class="[
         baseColor?.text?.primary,

@@ -3,7 +3,29 @@ import { reactive } from "vue";
 
 const state = reactive({
   dark: false,
-  toggleMode: false,
+  toggleMode: {
+    marketing: {
+      name: "Marketing",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi possimus incidunt delectus.",
+      done: false,
+      id: "marketing",
+    },
+    deployment: {
+      name: "Deployment",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi possimus incidunt delectus.",
+      done: false,
+      id: "deployment",
+    },
+    activate: {
+      name: "Activate user account",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi possimus incidunt delectus.",
+      done: false,
+      id: "activate",
+    },
+  },
   switchedMode: {
     banana: {
       name: "Banana 🍌",
@@ -34,15 +56,14 @@ const callback = (obj: { id: string; bool: boolean }) => {
   state.switchedMode[obj.id as keyof typeof state.switchedMode].done = obj.bool;
 };
 
-const callbackToggle = (obj: { id?: string; bool: boolean }) => {
-  console.log("🚀 ~ file: index.vue:38 ~ callbackToggle ~ obj:", obj);
-  state.toggleMode = obj.bool;
+const callbackToggle = (obj: { id: string; bool: boolean }) => {
+  state.toggleMode[obj.id as keyof typeof state.toggleMode].done = obj.bool;
 };
 </script>
 
 <template>
   <section
-    class="h-screen p-6"
+    class="min-h-screen p-6"
     :class="state.dark ? 'bg-slate-900' : 'bg-slate-100'"
   >
     <t-icon-button :dark="state.dark" @click="darkMode" className="ml-auto">
@@ -303,15 +324,48 @@ const callbackToggle = (obj: { id?: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center space-x-4">
-          <tCheckbox :dark="state.dark" @toggled="callbackToggle">
-            <p :class="state.toggleMode ? 'line-through' : ''">Do Stuff</p>
+          <tCheckbox :dark="state.dark">
+            <p>Example</p>
           </tCheckbox>
         </div>
         <div class="flex items-center justify-center space-x-4">
-          <tCheckbox disabled :dark="state.dark" @toggled="callbackToggle">
-            <p :class="state.toggleMode ? 'line-through' : ''">Do Stuff</p>
+          <tCheckbox disabled :dark="state.dark">
+            <p>Disabled Example</p>
           </tCheckbox>
         </div>
+        <div class="flex items-center justify-center space-x-4">
+          <tCheckbox active :dark="state.dark">
+            <p>Active Example</p>
+          </tCheckbox>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div></div>
+        <div class="flex flex-col justify-center space-y-2">
+          <tCheckbox
+            v-for="item in state.toggleMode"
+            :key="item.id"
+            :id="item.id"
+            @toggled="callbackToggle"
+            :dark="state.dark"
+          >
+            <div class="">
+              <h3
+                class="text-lg font-bold"
+                :class="[
+                  item.done ? 'line-through' : '',
+                  state.dark ? 'text-slate-300' : 'text-slate-800',
+                ]"
+              >
+                {{ item.name }}
+              </h3>
+              <p :class="[state.dark ? 'text-slate-600' : 'text-slate-500']">
+                {{ item.description }}
+              </p>
+            </div>
+          </tCheckbox>
+        </div>
+        <div></div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>
