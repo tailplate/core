@@ -47,7 +47,7 @@
       "primary": "border-blue-500",
       "checked": "checked:border-blue-500",
       "secondary": "text-slate-500 dark:text-slate-300",
-      "focus": "border-blue-400 "
+      "focus": "focus:border-blue-400 "
     },
     "ring": {
       "focus": "focus:ring-4 ring-blue-300 dark:ring-blue-900"
