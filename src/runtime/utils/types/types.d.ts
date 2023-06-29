@@ -15,12 +15,15 @@ type Color = {
     light?: String;
     focus?: String;
     base?: String;
+    groupHover?: String;
+    checked?: String;
     hover?: String;
     success?: String;
     danger?: String;
   };
   border?: {
     primary?: String;
+    checked?: String;
     secondary?: String;
     focus?: String;
   };

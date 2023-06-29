@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 
 const state = reactive({
   dark: false,
+  toggleMode: false,
   switchedMode: {
     banana: {
       name: "Banana 🍌",
@@ -31,6 +32,11 @@ const darkMode = () => (state.dark = !state.dark);
 
 const callback = (obj: { id: string; bool: boolean }) => {
   state.switchedMode[obj.id as keyof typeof state.switchedMode].done = obj.bool;
+};
+
+const callbackToggle = (obj: { id?: string; bool: boolean }) => {
+  console.log("🚀 ~ file: index.vue:38 ~ callbackToggle ~ obj:", obj);
+  state.toggleMode = obj.bool;
 };
 </script>
 
@@ -285,8 +291,8 @@ const callback = (obj: { id: string; bool: boolean }) => {
             <tSwitch :dark="state.dark" @switched="callback" :id="item.id">
               <p
                 :class="[
-                  item.done ? ' text-slate-400 line-through' : '',
                   state.dark ? 'text-slate-300' : 'text-slate-800',
+                  item.done ? 'line-through' : '',
                 ]"
               >
                 {{ item.name }}
@@ -294,6 +300,21 @@ const callback = (obj: { id: string; bool: boolean }) => {
             >
           </div>
         </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center space-x-4">
+          <tCheckbox :dark="state.dark" @toggled="callbackToggle">
+            <p :class="state.toggleMode ? 'line-through' : ''">Do Stuff</p>
+          </tCheckbox>
+        </div>
+        <div class="flex items-center justify-center space-x-4">
+          <tCheckbox disabled :dark="state.dark" @toggled="callbackToggle">
+            <p :class="state.toggleMode ? 'line-through' : ''">Do Stuff</p>
+          </tCheckbox>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">Wrapper</div>
       </div>
     </div>
   </section>

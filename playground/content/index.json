@@ -1,0 +1,17 @@
+{
+  "button": {
+    "new": true,
+    "slug": "button",
+    "name": "Button"
+  },
+  "groupButtons": {
+    "new": true,
+    "slug": "group-buttons",
+    "name": "Group Buttons"
+  },
+  "switch": {
+    "new": true,
+    "slug": "switch",
+    "name": "Switch"
+  }
+}
