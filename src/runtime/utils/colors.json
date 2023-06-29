@@ -57,6 +57,9 @@
     }
   },
   "red": {
+    "text": {
+      "base": "text-slate-100"
+    },
     "bg": {
       "primary": "bg-red-500"
     }

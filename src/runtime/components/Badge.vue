@@ -17,9 +17,9 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  slot: {
-    type: Boolean,
-    default: false,
+  content: {
+    type: String,
+    default: null,
   },
   color: {
     type: String,
@@ -49,21 +49,21 @@ if (props.color === null && state.specialColor === "") {
 const position = (slot: Boolean, position: String) => {
   if (slot) {
     if (position === "top-right") {
-      return "right-1 -top-2";
+      return "-right-2 -top-2";
     } else if (position === "top-left") {
-      return "-left-5 -top-2";
+      return "-left-2 -top-2";
     } else if (position === "bottom-left") {
-      return "-left-5 bottom-1";
+      return "-left-2 -bottom-2";
     } else if (position === "bottom-right") {
-      return "right-1 bottom-1";
+      return "-right-2 -bottom-2";
     }
   } else {
     if (position === "top-right") {
       return "-right-1 -top-1";
     } else if (position === "top-left") {
-      return "-left-4 -top-1";
+      return "-left-1 -top-1";
     } else if (position === "bottom-left") {
-      return "-left-4 -bottom-1";
+      return "-left-1 -bottom-1";
     } else if (position === "bottom-right") {
       return "-right-1 -bottom-1";
     }
@@ -73,27 +73,26 @@ const position = (slot: Boolean, position: String) => {
 
 <template>
   <div
-    class="absolute z-50 flex h-3 w-3"
-    :class="[
-      isDark() ? 'dark' : '',
-      position(props.slot, props.position),
-      props.slot ? 'mx-2' : '',
-    ]"
+    class="relative flex"
+    :class="[isDark() ? 'dark' : '', !!props.content ? 'mx-2' : '']"
   >
     <div
-      class="flex h-3 w-3 items-center justify-center rounded-full border text-xs font-normal"
+      class="absolute z-50 flex h-3 w-3 items-center justify-center rounded-full border text-xs font-normal"
       :class="[
-        props.slot ? 'p-3' : '',
+        !!props.content ? 'p-3' : '',
         props.border
-          ? 'border-white dark:border-slate-900'
+          ? 'border-2 border-white dark:border-slate-900'
           : 'border-transparent',
+        position(!!props.content, props.position),
         colorSchema?.bg?.primary,
+        colorSchema?.text?.base,
         props.className,
       ]"
     >
-      <div v-if="props.slot">
-        <slot />
-      </div>
+      <p>{{ props.content }}</p>
+    </div>
+    <div class="z-0">
+      <slot />
     </div>
   </div>
 </template>

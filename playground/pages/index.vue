@@ -373,74 +373,64 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>badge</p>
-            <tBadge></tBadge>
-          </TButton>
+          <TBadge :dark="state.dark">
+            <TButton>badge</TButton>
+          </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>number</p>
-            <tBadge slot>99</tBadge>
-          </TButton>
+          <TBadge content="9" :dark="state.dark">
+            <TButton>content</TButton>
+          </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>border</p>
-            <tBadge :dark="state.dark" slot border>99</tBadge>
-          </TButton>
+          <TBadge border content="9" :dark="state.dark">
+            <TButton>border</TButton>
+          </TBadge>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <TBadge content="9" position="top-left" :dark="state.dark">
+            <TButton>Top Left</TButton>
+          </TBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <TBadge content="9" position="bottom-left" :dark="state.dark">
+            <TButton>Bottom Left</TButton>
+          </TBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <TBadge content="9" position="top-right" :dark="state.dark">
+            <TButton>Top Right</TButton>
+          </TBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <TBadge content="9" position="bottom-right" :dark="state.dark">
+            <TButton>Bottom Right</TButton>
+          </TBadge>
         </div>
       </div>
       <div class="grid grid-cols-4 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>Top Left</p>
-            <tBadge slot position="top-left" :dark="state.dark">99</tBadge>
-          </TButton>
+          <TBadge position="top-left" :dark="state.dark">
+            <TButton>Top Left</TButton>
+          </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>Bot left</p>
-            <tBadge slot position="bottom-left" :dark="state.dark">99</tBadge>
-          </TButton>
+          <TBadge position="bottom-left" :dark="state.dark">
+            <TButton>Bottom Left</TButton>
+          </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>Bot Right</p>
-            <tBadge slot position="bottom-right" :dark="state.dark">99</tBadge>
-          </TButton>
+          <TBadge position="top-right" :dark="state.dark">
+            <TButton>Top Right</TButton>
+          </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TButton>
-            <p>Top Right</p>
-            <tBadge slot position="top-right" :dark="state.dark">99</tBadge>
-          </TButton>
-        </div>
-      </div>
-      <div class="grid grid-cols-4 items-center justify-center gap-4">
-        <div class="flex items-center justify-center">
-          <TButton>
-            <p>Top Left</p>
-            <tBadge position="top-left" :dark="state.dark">99</tBadge>
-          </TButton>
-        </div>
-        <div class="flex items-center justify-center">
-          <TButton>
-            <p>Bot left</p>
-            <tBadge position="bottom-left" :dark="state.dark">99</tBadge>
-          </TButton>
-        </div>
-        <div class="flex items-center justify-center">
-          <TButton>
-            <p>Bot Right</p>
-            <tBadge position="bottom-right" :dark="state.dark">99</tBadge>
-          </TButton>
-        </div>
-        <div class="flex items-center justify-center">
-          <TButton>
-            <p>Top Right</p>
-            <tBadge position="top-right" :dark="state.dark">99</tBadge>
-          </TButton>
+          <TBadge position="bottom-right" :dark="state.dark">
+            <TButton>Bottom Right</TButton>
+          </TBadge>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
