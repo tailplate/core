@@ -343,9 +343,9 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </tCheckbox>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4">
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div></div>
-        <div class="flex flex-col justify-center space-y-2">
+        <div class="flex flex-col justify-center space-y-6">
           <tCheckbox
             v-for="item in state.toggleMode"
             :key="item.id"
@@ -354,18 +354,17 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
             :dark="state.dark"
           >
             <div class="">
-              <h3
+              <TYpo
+                variant="h4"
+                :dark="state.dark"
                 class="text-lg font-bold"
-                :class="[
-                  item.done ? 'line-through' : '',
-                  state.dark ? 'text-slate-300' : 'text-slate-800',
-                ]"
+                :class="[item.done ? 'line-through' : '']"
               >
                 {{ item.name }}
-              </h3>
-              <p :class="[state.dark ? 'text-slate-600' : 'text-slate-500']">
+              </TYpo>
+              <TYpo :dark="state.dark" variant="small">
                 {{ item.description }}
-              </p>
+              </TYpo>
             </div>
           </tCheckbox>
         </div>
@@ -432,6 +431,29 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
             <TButton>Bottom Right</TButton>
           </TBadge>
         </div>
+      </div>
+      <div class="flex flex-col justify-center space-y-12 py-12">
+        <tYpo :dark="state.dark" variant="h1"> Tailplate is Awesome </tYpo>
+        <TYpo :dark="state.dark" variant="h2"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="h3"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="h4"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="h5"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="lead"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="p"> Tailplate is Awesome </TYpo>
+        <TYpo :dark="state.dark" variant="xs"> Tailplate is Awesome </TYpo>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div></div>
+        <div class="flex flex-col justify-center space-y-4">
+          <TYpo :dark="state.dark" variant="h2">
+            A new TailwindCSS components library for Nuxt.
+          </TYpo>
+          <TYpo :dark="state.dark" variant="lead">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+            ipsam necessitatibus cum ratione amet voluptates dolorum.
+          </TYpo>
+        </div>
+        <div></div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>

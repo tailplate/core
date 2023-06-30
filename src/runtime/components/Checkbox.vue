@@ -104,7 +104,7 @@ const groupHover = () => {
         <input
           type="checkbox"
           v-model="state.checkboxValue"
-          class="h-5 w-5 appearance-none rounded border outline-none"
+          class="h-5 w-5 appearance-none rounded border shadow-inner outline-none"
           :class="[applyColor()]"
         />
         <svg
