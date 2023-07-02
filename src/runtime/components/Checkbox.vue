@@ -6,13 +6,9 @@ import json from "../utils/colors.json";
 
 const emit = defineEmits(["toggled"]);
 
-const { $color, $dark } = useNuxtApp();
+const { $color } = useNuxtApp();
 
 const props = defineProps({
-  dark: {
-    type: Boolean,
-    default: null,
-  },
   disabled: {
     type: Boolean,
     default: false,
@@ -37,7 +33,6 @@ const props = defineProps({
 
 const state = reactive({ specialColor: "", checkboxValue: props.active });
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
 const baseColor: Color = json["base"];
 
@@ -73,20 +68,16 @@ const applyColor = () => {
 const groupHover = () => {
   if (props.disabled) {
     return;
-  } else if (!props.disabled && !isDark()) {
+  } else {
     return state.checkboxValue
-      ? colorSchema?.bg?.groupHover
-      : "group-hover:bg-slate-200";
-  } else if (!props.disabled && isDark()) {
-    return state.checkboxValue
-      ? "group-hover:bg-blue-900"
-      : "group-hover:bg-slate-800";
+      ? "bg-blue-100 dark:bg-blue-900"
+      : "bg-slate-200 dark:bg-slate-800";
   }
 };
 </script>
 
 <template>
-  <div :class="[isDark() ? 'dark' : '']" class="group">
+  <div class="group">
     <div
       class="flex select-none items-center space-x-1"
       @click="props.disabled ? '' : toggle()"
@@ -97,16 +88,17 @@ const groupHover = () => {
           : 'cursor-pointer ',
       ]"
     >
-      <div
-        class="relative flex items-center justify-center rounded-full p-3 duration-200"
-        :class="[groupHover()]"
-      >
+      <div class="relative flex items-center justify-center p-3 duration-200">
         <input
           type="checkbox"
           v-model="state.checkboxValue"
-          class="h-5 w-5 appearance-none rounded border shadow-inner outline-none"
+          class="z-10 h-5 w-5 appearance-none rounded border shadow-inner outline-none"
           :class="[applyColor()]"
         />
+        <div
+          class="absolute inset-0 z-0 rounded-full opacity-0 group-hover:opacity-100"
+          :class="[groupHover()]"
+        ></div>
         <svg
           v-if="state.checkboxValue && !props.disabled"
           xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +106,7 @@ const groupHover = () => {
           viewBox="0 0 24 24"
           stroke-width="4"
           stroke="currentColor"
-          class="absolute h-3 w-3 font-bold"
+          class="absolute z-20 h-3 w-3 font-bold"
           :class="colorSchema?.text?.base"
         >
           <path

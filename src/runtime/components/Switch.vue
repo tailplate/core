@@ -6,7 +6,7 @@ import json from "../utils/colors.json";
 
 const emit = defineEmits(["switched"]);
 
-const { $dark, $color } = useNuxtApp();
+const { $color } = useNuxtApp();
 
 const state = reactive({ switched: false, specialColor: "" });
 
@@ -60,8 +60,6 @@ if (props.color === null && state.specialColor === "") {
     : (colorSchema = json[props.color as keyof typeof json]);
 }
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
-
 let classes: Array<String> = [];
 let width: string;
 let sizeParent: string;
@@ -80,18 +78,16 @@ const switchButton = () => {
 const applyColor = () => {
   if (state.switched) {
     return colorSchema?.bg?.primary;
-  } else if (isDark() && !props.disabled) {
-    return "bg-slate-600";
-  } else if (isDark() && props.disabled) {
-    return "bg-slate-700";
-  } else {
-    return "bg-slate-300";
+  } else if (!props.disabled) {
+    return "bg-slate-300 dark:bg-slate-600";
+  } else if (props.disabled) {
+    return "bg-slate-300 dark:bg-slate-700";
   }
 };
 </script>
 
 <template>
-  <div :class="[isDark() ? 'dark' : '', width]">
+  <div :class="[width]">
     <button @click="switchButton()" class="flex items-center space-x-4">
       <div
         class="flex items-center justify-between rounded-full font-semibold uppercase shadow-inner duration-100 focus:shadow-none active:shadow-none"
@@ -103,14 +99,8 @@ const applyColor = () => {
         ]"
       >
         <div
-          class="rounded-full duration-100"
-          :class="[
-            sizeChild,
-            state.switched ? '0 translate-x-full' : '',
-            props.disabled && isDark()
-              ? 'border-2 bg-slate-200  shadow-inner '
-              : 'bg-white',
-          ]"
+          class="rounded-full bg-white duration-100"
+          :class="[sizeChild, state.switched ? '0 translate-x-full' : '']"
         ></div>
       </div>
       <slot />

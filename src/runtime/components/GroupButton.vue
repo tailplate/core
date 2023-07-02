@@ -4,7 +4,7 @@ import { reactive } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
-const { $color, $dark } = useNuxtApp();
+const { $color } = useNuxtApp();
 
 const state = reactive({ specialColor: "" });
 
@@ -27,7 +27,6 @@ const props = defineProps({
   },
 });
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
 
 if (props.color === null && state.specialColor === "") {
@@ -48,12 +47,7 @@ props.fullWidth ? (width = "w-full") : "";
 <template>
   <div
     class="flex h-full divide-x overflow-hidden"
-    :class="[
-      isDark() ? 'dark' : '',
-      width,
-      colorSchema?.divide?.primary,
-      isRounded,
-    ]"
+    :class="[width, colorSchema?.divide?.primary, isRounded]"
   >
     <slot></slot>
   </div>

@@ -4,9 +4,9 @@ import { reactive } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
-const { $color, $dark } = useNuxtApp();
+const { $color, $baseColor } = useNuxtApp();
 
-const state = reactive({ specialColor: "" });
+const state = reactive({ customColor: "" });
 
 const props = defineProps({
   dark: {
@@ -23,18 +23,18 @@ const props = defineProps({
   },
 });
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
+let baseColorSchema: Color;
 
-if (props.color === null && state.specialColor === "") {
+if (props.color === null && state.customColor === "") {
   colorSchema = $color;
 } else {
-  state.specialColor !== ""
-    ? (colorSchema = json[state.specialColor as keyof typeof json])
+  state.customColor !== ""
+    ? (colorSchema = json[state.customColor as keyof typeof json])
     : (colorSchema = json[props.color as keyof typeof json]);
 }
 </script>
 
 <template>
-  <div :class="[isDark() ? 'dark' : '']"></div>
+  <div></div>
 </template>

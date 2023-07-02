@@ -62,9 +62,10 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
 </script>
 
 <template>
-  <section
+  <t-dark
     class="relative min-h-screen p-6"
     :class="state.dark ? 'bg-slate-900' : 'bg-slate-100'"
+    :dark="state.dark"
   >
     <t-icon-button
       :dark="state.dark"
@@ -459,5 +460,5 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
         <div class="flex items-center justify-center">Wrapper</div>
       </div>
     </div>
-  </section>
+  </t-dark>
 </template>

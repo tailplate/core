@@ -4,7 +4,7 @@ import { reactive } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
-const { $color, $dark } = useNuxtApp();
+const { $color } = useNuxtApp();
 
 const state = reactive({ specialColor: "" });
 
@@ -23,10 +23,7 @@ const props = defineProps({
       return ["sm", "md", "lg"].includes(value);
     },
   },
-  dark: {
-    type: Boolean,
-    default: null,
-  },
+
   rounded: {
     type: Boolean,
     default: false,
@@ -49,7 +46,6 @@ const props = defineProps({
   },
 });
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
 
 if (props.color === null && state.specialColor === "") {
@@ -108,7 +104,7 @@ props.group ? "" : (groupClass = "rounded-md active:scale-95 ");
 </script>
 
 <template>
-  <div :class="[isDark() ? 'dark' : '', width]">
+  <div :class="[width]">
     <button
       class="relative flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width, groupClass]"

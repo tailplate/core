@@ -8,6 +8,7 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       color: json[options.color],
+      baseColor: json["base"],
       dark: options.dark,
     },
   };

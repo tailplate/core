@@ -4,7 +4,7 @@ import { reactive } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
-const { $color, $dark } = useNuxtApp();
+const { $color } = useNuxtApp();
 
 const state = reactive({ specialColor: "" });
 
@@ -35,7 +35,6 @@ const props = defineProps({
   },
 });
 
-const isDark: () => Boolean = () => (props.dark === null ? $dark : props.dark);
 let colorSchema: Color;
 
 if (props.color === null && state.specialColor === "") {
@@ -72,10 +71,7 @@ const position = (slot: Boolean, position: String) => {
 </script>
 
 <template>
-  <div
-    class="relative flex"
-    :class="[isDark() ? 'dark' : '', !!props.content ? 'mx-2' : '']"
-  >
+  <div class="relative flex" :class="[!!props.content ? 'mx-2' : '']">
     <div
       class="absolute z-50 flex h-3 w-3 items-center justify-center rounded-full border text-xs font-normal"
       :class="[
