@@ -35,6 +35,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  size: {
+    type: String,
+    default: "base",
+  },
 });
 
 let colorSchema: Color;
@@ -58,6 +62,26 @@ const rounded = () => {
   }
 };
 
+const size = () => {
+  if (props.size === "xs") {
+    return "w-6 h-6";
+  } else if (props.size === "sm") {
+    return "w-8 h-8";
+  } else if (props.size === "md") {
+    return "w-12 h-12";
+  } else if (props.size === "base") {
+    return "w-12 h-12";
+  } else if (props.size === "lg") {
+    return "w-16 h-16";
+  } else if (props.size === "xl") {
+    return "w-20 h-20";
+  } else if (props.size === "2xl") {
+    return "w-24 h-24";
+  } else {
+    return "h-12 w-12";
+  }
+};
+
 if (props.variant === "full") emit("avatar-full");
 </script>
 
@@ -66,7 +90,7 @@ if (props.variant === "full") emit("avatar-full");
     :src="props.src"
     :alt="props.alt"
     srcset=""
-    class="h-12 w-12 object-cover"
-    :class="[rounded()]"
+    class="object-cover"
+    :class="[rounded(), size()]"
   />
 </template>
