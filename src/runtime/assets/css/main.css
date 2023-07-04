@@ -566,6 +566,22 @@ video {
   top: -0.5rem;
 }
 
+.-right-0 {
+  right: -0px;
+}
+
+.-top-0 {
+  top: -0px;
+}
+
+.-bottom-0 {
+  bottom: -0px;
+}
+
+.-left-0 {
+  left: -0px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -609,6 +625,10 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .w-10 {
@@ -835,6 +855,11 @@ video {
 .bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-1 {

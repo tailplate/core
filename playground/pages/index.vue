@@ -57,21 +57,22 @@ const callback = (obj: { id: string; bool: boolean }) => {
 };
 
 const callbackToggle = (obj: { id: string; bool: boolean }) => {
+  console.log("🚀 ~ file: index.vue:60 ~ callbackToggle ~ obj:", obj);
   state.toggleMode[obj.id as keyof typeof state.toggleMode].done = obj.bool;
+  console.log(
+    "🚀 ~ file: index.vue:62 ~ callbackToggle ~ state.toggleMode[obj.id as keyof typeof state.toggleMode].done:",
+    state.toggleMode[obj.id as keyof typeof state.toggleMode].done
+  );
 };
 </script>
 
 <template>
   <t-dark
+    :dark="state.dark"
     class="relative min-h-screen p-6"
     :class="state.dark ? 'bg-slate-900' : 'bg-slate-100'"
-    :dark="state.dark"
   >
-    <t-icon-button
-      :dark="state.dark"
-      @click="darkMode"
-      className="ml-auto top-6 right-6 fixed"
-    >
+    <t-icon-button @click="darkMode" className="ml-auto top-6 right-6 fixed">
       <svg
         v-if="!state.dark"
         xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +109,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
     >
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <t-button :dark="state.dark">
+          <t-button>
             <p>filled</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +126,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button :dark="state.dark" variant="outlined">
+          <t-button variant="outlined">
             <p>Outlined</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +143,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button :dark="state.dark" variant="text">
+          <t-button variant="text">
             <p>Text</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -161,31 +162,29 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <t-button rounded :dark="state.dark"> Filled </t-button>
+          <t-button rounded> Filled </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button rounded :dark="state.dark" variant="outlined">
-            Outlined
-          </t-button>
+          <t-button rounded variant="outlined"> Outlined </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button rounded :dark="state.dark" variant="text"> Text </t-button>
+          <t-button rounded variant="text"> Text </t-button>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <t-button size="sm" :dark="state.dark"> Small </t-button>
+          <t-button size="sm"> Small </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button size="md" :dark="state.dark"> Base </t-button>
+          <t-button size="md"> Base </t-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-button size="lg" :dark="state.dark"> Large </t-button>
+          <t-button size="lg"> Large </t-button>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <t-icon-button :dark="state.dark">
+          <t-icon-button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -203,7 +202,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </t-icon-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-icon-button :dark="state.dark" variant="outlined">
+          <t-icon-button variant="outlined">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -221,7 +220,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           </t-icon-button>
         </div>
         <div class="flex items-center justify-center">
-          <t-icon-button :dark="state.dark" variant="text">
+          <t-icon-button variant="text">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -241,7 +240,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <tGroupButton :dark="state.dark">
+          <tGroupButton>
             <tButton group>test</tButton>
             <tButton group>test</tButton>
             <tButton group>test</tButton>
@@ -249,7 +248,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
         </div>
 
         <div class="flex items-center justify-center">
-          <tGroupButton :dark="state.dark">
+          <tGroupButton>
             <t-icon-button group>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -300,11 +299,11 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <tSwitch></tSwitch>
-        <tSwitch :dark="state.dark" disabled></tSwitch>
+        <tSwitch disabled></tSwitch>
         <tSwitch active></tSwitch>
         <tSwitch danger></tSwitch>
         <tSwitch danger active></tSwitch>
-        <tSwitch danger active disabled :dark="state.dark"></tSwitch>
+        <tSwitch danger active disabled></tSwitch>
         <tSwitch size="sm" />
         <tSwitch size="md" />
         <tSwitch size="lg" />
@@ -314,7 +313,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
             :key="item.name"
             class="flex space-x-4"
           >
-            <tSwitch :dark="state.dark" @switched="callback" :id="item.id">
+            <tSwitch @switched="callback" :id="item.id">
               <p
                 :class="[
                   state.dark ? 'text-slate-300' : 'text-slate-800',
@@ -329,17 +328,17 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center space-x-4">
-          <tCheckbox :dark="state.dark">
+          <tCheckbox>
             <p>Example</p>
           </tCheckbox>
         </div>
         <div class="flex items-center justify-center space-x-4">
-          <tCheckbox disabled :dark="state.dark">
+          <tCheckbox disabled>
             <p>Disabled Example</p>
           </tCheckbox>
         </div>
         <div class="flex items-center justify-center space-x-4">
-          <tCheckbox active :dark="state.dark">
+          <tCheckbox active>
             <p>Active Example</p>
           </tCheckbox>
         </div>
@@ -347,43 +346,38 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div></div>
         <div class="flex flex-col justify-center space-y-6">
-          <tCheckbox
-            v-for="item in state.toggleMode"
-            :key="item.id"
-            :id="item.id"
-            @toggled="callbackToggle"
-            :dark="state.dark"
-          >
-            <div class="">
-              <TYpo
-                variant="h4"
-                :dark="state.dark"
-                class="text-lg font-bold"
-                :class="[item.done ? 'line-through' : '']"
-              >
-                {{ item.name }}
-              </TYpo>
-              <TYpo :dark="state.dark" variant="small">
-                {{ item.description }}
-              </TYpo>
-            </div>
-          </tCheckbox>
+          <div v-for="item in state.toggleMode" :key="item.id">
+            <tCheckbox :id="item.id" @toggled="callbackToggle">
+              <div>
+                <TYpo
+                  variant="h4"
+                  class="text-lg font-bold"
+                  :className="item.done ? 'line-through' : ''"
+                >
+                  {{ item.name }}
+                </TYpo>
+                <TYpo variant="small">
+                  {{ item.description }}
+                </TYpo>
+              </div>
+            </tCheckbox>
+          </div>
         </div>
         <div></div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <TBadge :dark="state.dark">
+          <TBadge>
             <TButton>badge</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge content="9" :dark="state.dark">
+          <TBadge content="9">
             <TButton>content</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge border content="9" :dark="state.dark">
+          <TBadge border content="9">
             <TButton>border</TButton>
           </TBadge>
         </div>
@@ -391,70 +385,117 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
 
       <div class="grid grid-cols-4 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <TBadge content="9" position="top-left" :dark="state.dark">
+          <TBadge content="9" position="top-left">
             <TButton>Top Left</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge content="9" position="bottom-left" :dark="state.dark">
+          <TBadge content="9" position="bottom-left">
             <TButton>Bottom Left</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge content="9" position="top-right" :dark="state.dark">
+          <TBadge content="9" position="top-right">
             <TButton>Top Right</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge content="9" position="bottom-right" :dark="state.dark">
+          <TBadge content="9" position="bottom-right">
             <TButton>Bottom Right</TButton>
           </TBadge>
         </div>
       </div>
       <div class="grid grid-cols-4 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
-          <TBadge position="top-left" :dark="state.dark">
+          <TBadge position="top-left">
             <TButton>Top Left</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge position="bottom-left" :dark="state.dark">
+          <TBadge position="bottom-left">
             <TButton>Bottom Left</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge position="top-right" :dark="state.dark">
+          <TBadge position="top-right">
             <TButton>Top Right</TButton>
           </TBadge>
         </div>
         <div class="flex items-center justify-center">
-          <TBadge position="bottom-right" :dark="state.dark">
+          <TBadge position="bottom-right">
             <TButton>Bottom Right</TButton>
           </TBadge>
         </div>
       </div>
       <div class="flex flex-col justify-center space-y-12 py-12">
-        <tYpo :dark="state.dark" variant="h1"> Tailplate is Awesome </tYpo>
-        <TYpo :dark="state.dark" variant="h2"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="h3"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="h4"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="h5"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="lead"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="p"> Tailplate is Awesome </TYpo>
-        <TYpo :dark="state.dark" variant="xs"> Tailplate is Awesome </TYpo>
+        <tYpo variant="h1"> Tailplate is Awesome </tYpo>
+        <TYpo variant="h2"> Tailplate is Awesome </TYpo>
+        <TYpo variant="h3"> Tailplate is Awesome </TYpo>
+        <TYpo variant="h4"> Tailplate is Awesome </TYpo>
+        <TYpo variant="h5"> Tailplate is Awesome </TYpo>
+        <TYpo variant="lead"> Tailplate is Awesome </TYpo>
+        <TYpo variant="p"> Tailplate is Awesome </TYpo>
+        <TYpo variant="xs"> Tailplate is Awesome </TYpo>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div></div>
         <div class="flex flex-col justify-center space-y-4">
-          <TYpo :dark="state.dark" variant="h2">
+          <TYpo variant="h2">
             A new TailwindCSS components library for Nuxt.
           </TYpo>
-          <TYpo :dark="state.dark" variant="lead">
+          <TYpo variant="lead">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
             ipsam necessitatibus cum ratione amet voluptates dolorum.
           </TYpo>
         </div>
         <div></div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <tAvatar
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </div>
+        <div class="flex items-center justify-center">
+          <tAvatar
+            variant="rounded"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </div>
+        <div class="flex items-center justify-center">
+          <tAvatar
+            variant="squared"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </div>
+        <div class="flex items-center justify-center">
+          <tBadge>
+            <tAvatar
+              src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+            ></tAvatar
+          ></tBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <tBadge>
+            <tAvatar
+              variant="rounded"
+              src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+            ></tAvatar
+          ></tBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <tBadge>
+            <tAvatar
+              variant="squared"
+              src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+            ></tAvatar
+          ></tBadge>
+        </div>
+        <div class="flex items-center justify-center">
+          <tBadge>
+            <p>test</p>
+          </tBadge>
+        </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>

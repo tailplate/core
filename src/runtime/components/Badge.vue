@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
-import { reactive } from "vue";
+import { reactive, useSlots, onMounted } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
 const { $color } = useNuxtApp();
 
-const state = reactive({ specialColor: "" });
+const slots = useSlots();
+
+const state = reactive({ specialColor: "", fullRounded: false });
 
 const props = defineProps({
   dark: {
@@ -45,8 +47,32 @@ if (props.color === null && state.specialColor === "") {
     : (colorSchema = json[props.color as keyof typeof json]);
 }
 
+const callbackFull = () => {
+  state.fullRounded = true;
+  console.log("🚀 ~ file: Badge.vue:50 ~ callbackFull :", true);
+};
+
+const checkAvatar = () => {
+  if (slots?.default) {
+    // @ts-expect-error
+    if (slots?.default()[0].type.__name === "Avatar") {
+      if (slots.default()[0].props?.variant) {
+        state.fullRounded = false;
+      } else {
+        state.fullRounded = true;
+      }
+    }
+  } else {
+    state.fullRounded = false;
+  }
+};
+
+onMounted(() => {
+  checkAvatar();
+});
+
 const position = (slot: Boolean, position: String) => {
-  if (slot) {
+  if (slot && !state.fullRounded) {
     if (position === "top-right") {
       return "-right-2 -top-2";
     } else if (position === "top-left") {
@@ -55,6 +81,16 @@ const position = (slot: Boolean, position: String) => {
       return "-left-2 -bottom-2";
     } else if (position === "bottom-right") {
       return "-right-2 -bottom-2";
+    }
+  } else if (state.fullRounded) {
+    if (position === "top-right") {
+      return "-right-0 -top-0";
+    } else if (position === "top-left") {
+      return "-left-0 -top-0";
+    } else if (position === "bottom-left") {
+      return "-left-0 -bottom-0";
+    } else if (position === "bottom-right") {
+      return "-right-0 -bottom-0";
     }
   } else {
     if (position === "top-right") {
@@ -87,7 +123,7 @@ const position = (slot: Boolean, position: String) => {
     >
       <p>{{ props.content }}</p>
     </div>
-    <div class="z-0">
+    <div class="z-0" @avatar-full="callbackFull">
       <slot />
     </div>
   </div>
