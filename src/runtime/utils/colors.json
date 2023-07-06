@@ -63,5 +63,13 @@
     "bg": {
       "primary": "bg-red-500"
     }
+  },
+  "green": {
+    "text": {
+      "base": "text-slate-100"
+    },
+    "bg": {
+      "primary": "bg-green-500"
+    }
   }
 }

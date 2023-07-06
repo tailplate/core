@@ -70,7 +70,7 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
   <t-dark
     :dark="state.dark"
     class="relative min-h-screen p-6"
-    :class="state.dark ? 'bg-slate-900' : 'bg-slate-100'"
+    :class="state.dark ? 'bg-slate-900' : 'bg-white'"
   >
     <t-icon-button @click="darkMode" className="ml-auto top-6 right-6 fixed">
       <svg
@@ -144,6 +144,23 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
         </div>
         <div class="flex items-center justify-center">
           <t-button variant="text">
+            <p>Text</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-5 w-5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.75 9.25a.75.75 0 000 1.5h4.59l-2.1 1.95a.75.75 0 001.02 1.1l3.5-3.25a.75.75 0 000-1.1l-3.5-3.25a.75.75 0 10-1.02 1.1l2.1 1.95H6.75z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </t-button>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button variant="text" :dark="false">
             <p>Text</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -501,22 +518,82 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           size="sm"
           src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
         ></tAvatar>
-        <tAvatar
-          size="md"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
-        <tAvatar
-          size="lg"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
-        <tAvatar
-          size="xl"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
+        <t-badge>
+          <tAvatar
+            size="md"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge>
+          <tAvatar
+            size="lg"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge>
+          <tAvatar
+            size="xl"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
         <tAvatar
           size="2xl"
           src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
         ></tAvatar>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <t-breadcrumbs>
+            <t-bread-link>
+              <a href="#">Home</a>
+            </t-bread-link>
+            <t-bread-link>
+              <a href="#">Documentation</a>
+            </t-bread-link>
+            <t-bread-link current>
+              <a href="#">Breadcrumbs</a>
+            </t-bread-link>
+          </t-breadcrumbs>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-breadcrumbs>
+            <t-bread-link>
+              <a href="#"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+            </t-bread-link>
+            <t-bread-link>
+              <a href="#">Documentation</a>
+            </t-bread-link>
+            <t-bread-link current>
+              <a href="#">Breadcrumbs</a>
+            </t-bread-link>
+          </t-breadcrumbs>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-breadcrumbs>
+            <t-bread-link separator="-">
+              <a href="#">Home</a>
+            </t-bread-link>
+            <t-bread-link separator="-">
+              <a href="#">Documentation</a>
+            </t-bread-link>
+            <t-bread-link current>
+              <a href="#">Breadcrumbs</a>
+            </t-bread-link>
+          </t-breadcrumbs>
+        </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>

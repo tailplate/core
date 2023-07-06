@@ -99,7 +99,7 @@ const applyColor = () => {
         ]"
       >
         <div
-          class="rounded-full bg-white duration-100"
+          class="rounded-full border bg-white duration-100"
           :class="[sizeChild, state.switched ? '0 translate-x-full' : '']"
         ></div>
       </div>

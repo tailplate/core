@@ -23,7 +23,6 @@ const props = defineProps({
       return ["sm", "md", "lg"].includes(value);
     },
   },
-
   rounded: {
     type: Boolean,
     default: false,

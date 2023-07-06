@@ -71,7 +71,7 @@ const groupHover = () => {
   } else {
     return state.checkboxValue
       ? "bg-blue-100 dark:bg-blue-900"
-      : "bg-slate-200 dark:bg-slate-800";
+      : "bg-slate-100 dark:bg-slate-800";
   }
 };
 </script>
@@ -92,11 +92,11 @@ const groupHover = () => {
         <input
           type="checkbox"
           v-model="state.checkboxValue"
-          class="z-10 h-5 w-5 appearance-none rounded border shadow-inner outline-none"
+          class="z-10 h-5 w-5 appearance-none rounded border bg-white shadow-inner outline-none"
           :class="[applyColor()]"
         />
         <div
-          class="absolute inset-0 z-0 rounded-full opacity-0 group-hover:opacity-100"
+          class="absolute inset-0 z-0 rounded-full opacity-0 duration-300 group-hover:opacity-100"
           :class="[groupHover()]"
         ></div>
         <svg

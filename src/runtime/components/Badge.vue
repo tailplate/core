@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
-import { reactive, useSlots, onMounted } from "vue";
+import { reactive, useSlots, onMounted, watch } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
@@ -46,6 +46,19 @@ if (props.color === null && state.specialColor === "") {
     ? (colorSchema = json[state.specialColor as keyof typeof json])
     : (colorSchema = json[props.color as keyof typeof json]);
 }
+
+watch(
+  () => props.color,
+  (color) => {
+    if (color === null && state.specialColor === "") {
+      colorSchema = $color;
+    } else {
+      state.specialColor !== ""
+        ? (colorSchema = json[state.specialColor as keyof typeof json])
+        : (colorSchema = json[props.color as keyof typeof json]);
+    }
+  }
+);
 
 const callbackFull = () => {
   state.fullRounded = true;
