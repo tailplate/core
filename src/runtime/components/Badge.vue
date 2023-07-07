@@ -62,7 +62,6 @@ watch(
 
 const callbackFull = () => {
   state.fullRounded = true;
-  console.log("🚀 ~ file: Badge.vue:50 ~ callbackFull :", true);
 };
 
 const checkAvatar = () => {

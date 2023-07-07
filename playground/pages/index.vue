@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  openCollapse: false,
   dark: false,
   toggleMode: {
     marketing: {
@@ -593,6 +594,16 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
               <a href="#">Breadcrumbs</a>
             </t-bread-link>
           </t-breadcrumbs>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex flex-col justify-center space-y-6">
+          <t-button @click="state.openCollapse = !state.openCollapse">
+            Open
+          </t-button>
+          <t-collapse :open="state.openCollapse">
+            <t-ypo variant="h3">Hello, world.</t-ypo>
+          </t-collapse>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
