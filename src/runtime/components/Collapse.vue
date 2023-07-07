@@ -47,7 +47,28 @@ watch(
 </script>
 
 <template>
-  <div v-if="state.open">
-    <slot />
-  </div>
+  <Transition name="slide-fade">
+    <div v-if="state.open" class="duration-200">
+      <slot /></div
+  ></Transition>
 </template>
+
+<style>
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+</style>
