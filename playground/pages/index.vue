@@ -65,6 +65,14 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
     state.toggleMode[obj.id as keyof typeof state.toggleMode].done
   );
 };
+
+const carousel = [
+  { src: "/img/1.jpg", alt: "Test" },
+  { src: "/img/2.jpg", alt: "Test" },
+  { src: "/img/3.jpg", alt: "Test" },
+  { src: "/videos/video.mp4", alt: "Test", type: "video" },
+  { src: "/img/4.jpg", alt: "Test" },
+];
 </script>
 
 <template>
@@ -597,13 +605,18 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
-        <div class="flex flex-col justify-center space-y-6">
+        <div class="flex h-24 w-48 flex-col items-center space-y-6">
           <t-button @click="state.openCollapse = !state.openCollapse">
             Open
           </t-button>
           <t-collapse :open="state.openCollapse">
             <t-ypo variant="h3">Hello, world.</t-ypo>
           </t-collapse>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <t-carousel :sources="carousel"></t-carousel>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
