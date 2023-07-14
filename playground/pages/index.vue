@@ -620,6 +620,54 @@ const carousel = [
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
+        <div class="flex items-center justify-center">
+          <t-tooltip
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, excepturi"
+          >
+            <t-button>submit</t-button>
+          </t-tooltip>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-tooltip content="Lorem ipsum dolor.">
+            <t-switch></t-switch>
+          </t-tooltip>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="flex items-center justify-center">
+            <t-breadcrumbs>
+              <t-tooltip content="Lorem ipsum dolor, sit amet.">
+                <t-bread-link>
+                  <a href="#"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="h-4 w-4"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                </t-bread-link>
+              </t-tooltip>
+              <t-tooltip content="Lorem ipsum.">
+                <t-bread-link>
+                  <a href="#">Documentation</a>
+                </t-bread-link>
+              </t-tooltip>
+              <t-tooltip content="Lorem ipsum.">
+                <t-bread-link current>
+                  <a href="#">Breadcrumbs</a>
+                </t-bread-link>
+              </t-tooltip>
+            </t-breadcrumbs>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">Wrapper</div>
       </div>
     </div>
