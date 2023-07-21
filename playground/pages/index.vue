@@ -2,6 +2,12 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  show: {
+    one: true,
+    two: false,
+    three: false,
+    four: false,
+  },
   openCollapse: false,
   dark: false,
   toggleMode: {
@@ -667,7 +673,37 @@ const carousel = [
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4">
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
+        <div class="flex w-[800px] items-center justify-center">
+          <t-accordion>
+            <t-accordion-header @click="state.show.one = !state.show.one">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit?
+            </t-accordion-header>
+            <t-accordion-body :show="state.show.one">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              maiores eaque magni aspernatur, hic placeat consequuntur earum
+              ipsa eligendi quasi.
+            </t-accordion-body>
+            <t-accordion-header @click="state.show.two = !state.show.two">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit?
+            </t-accordion-header>
+            <t-accordion-body :show="state.show.two">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              maiores eaque magni aspernatur, hic placeat consequuntur earum
+              ipsa eligendi quasi.
+            </t-accordion-body>
+            <t-accordion-header @click="state.show.three = !state.show.three">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit?
+            </t-accordion-header>
+            <t-accordion-body :show="state.show.three">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              maiores eaque magni aspernatur, hic placeat consequuntur earum
+              ipsa eligendi quasi.
+            </t-accordion-body>
+          </t-accordion>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center">Wrapper</div>
       </div>
     </div>
