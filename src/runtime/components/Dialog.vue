@@ -23,6 +23,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  variant: {
+    type: String,
+    default: "center",
+  },
   className: {
     type: String,
     default: "",
@@ -53,26 +57,51 @@ watch(
 </script>
 
 <template>
-  <div
-    @wheel.prevent
-    @touchmove.prevent
-    @scroll.prevent
-    class="fixed inset-0 z-50 h-full w-full"
-    v-if="state.show"
-  >
+  <div @wheel.prevent @touchmove.prevent @scroll.prevent>
     <div
-      @click="close()"
-      class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-20"
+      class="fixed inset-0 z-50 h-full w-full"
+      v-if="state.show && props.variant === 'center'"
     >
-      <div class="max-w-[90%] xl:max-w-[70%]">
-        <slot></slot>
+      <div
+        @click="close()"
+        class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-20"
+      >
+        <div class="max-w-[90%] xl:max-w-[70%]">
+          <slot></slot>
+        </div>
       </div>
     </div>
+    <Transition :duration="550" name="nested">
+      <div
+        class="fixed inset-0 z-50 h-screen w-full"
+        v-if="state.show && props.variant === 'side'"
+      >
+        <div
+          @click="close()"
+          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+        >
+          <div class="inner flex h-screen">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style>
 .hide {
   backdrop-filter: blur(3px);
+}
+
+.nested-enter-active .inner,
+.nested-leave-active .inner {
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.nested-enter-from .inner,
+.nested-leave-to .inner {
+  opacity: 0;
+  transform: translateX(-5rem);
 }
 </style>

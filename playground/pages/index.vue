@@ -2,7 +2,10 @@
 import { reactive } from "vue";
 
 const state = reactive({
-  dialog: false,
+  dialog: {
+    base: false,
+    side: false,
+  },
   show: {
     one: true,
     two: false,
@@ -73,8 +76,11 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
   );
 };
 
-const closeDialog = () => {
-  state.dialog = false;
+const closeDialogBase = () => {
+  state.dialog.base = false;
+};
+const closeDialogSide = () => {
+  state.dialog.side = false;
 };
 
 const carousel = [
@@ -710,8 +716,10 @@ const carousel = [
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center">
-          <t-button @click="state.dialog = !state.dialog"> Show </t-button>
-          <t-dialog @close="closeDialog()" :show="state.dialog">
+          <t-button @click="state.dialog.base = !state.dialog.base">
+            Show
+          </t-button>
+          <t-dialog @close="closeDialogBase()" :show="state.dialog.base">
             <div class="rounded-md bg-slate-100 p-4 shadow">
               <TYpo variant="p">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
@@ -721,6 +729,23 @@ const carousel = [
                 Doloremque eligendi dolorem magnam quaerat temporibus
                 voluptatibus ullam dolor voluptate praesentium a!</TYpo
               >
+            </div>
+          </t-dialog>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button @click="state.dialog.side = !state.dialog.side">
+            Show
+          </t-button>
+          <t-dialog
+            variant="side"
+            @close="closeDialogSide()"
+            :show="state.dialog.side"
+          >
+            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
             </div>
           </t-dialog>
         </div>
