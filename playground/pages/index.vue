@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  dialog: false,
   show: {
     one: true,
     two: false,
@@ -70,6 +71,10 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
     "🚀 ~ file: index.vue:62 ~ callbackToggle ~ state.toggleMode[obj.id as keyof typeof state.toggleMode].done:",
     state.toggleMode[obj.id as keyof typeof state.toggleMode].done
   );
+};
+
+const closeDialog = () => {
+  state.dialog = false;
 };
 
 const carousel = [
@@ -701,6 +706,23 @@ const carousel = [
               ipsa eligendi quasi.
             </t-accordion-body>
           </t-accordion>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <t-button @click="state.dialog = !state.dialog"> Show </t-button>
+          <t-dialog @close="closeDialog()" :show="state.dialog">
+            <div class="rounded-md bg-slate-100 p-4 shadow">
+              <TYpo variant="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
+                obcaecati eos quidem exercitationem impedit sapiente, ipsa eum.
+                Debitis, deleniti suscipit aut neque minus porro at, voluptate
+                autem nihil perspiciatis, voluptatibus reiciendis ab iste.
+                Doloremque eligendi dolorem magnam quaerat temporibus
+                voluptatibus ullam dolor voluptate praesentium a!</TYpo
+              >
+            </div>
+          </t-dialog>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
