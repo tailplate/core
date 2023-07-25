@@ -734,20 +734,16 @@ const carousel = [
         </div>
         <div class="flex items-center justify-center">
           <t-button @click="state.dialog.side = !state.dialog.side">
-            Show
+            Drawer
           </t-button>
-          <t-dialog
-            variant="side"
-            @close="closeDialogSide()"
-            :show="state.dialog.side"
-          >
+          <t-drawer @close="closeDialogSide()" :show="state.dialog.side">
             <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
             </div>
-          </t-dialog>
+          </t-drawer>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">

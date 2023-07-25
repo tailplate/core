@@ -54,16 +54,18 @@ watch(
 
 <template>
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <div class="fixed inset-0 z-50 h-full w-full" v-if="state.show">
-      <div
-        @click="close()"
-        class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-20"
-      >
-        <div class="max-w-[90%] xl:max-w-[70%]">
-          <slot></slot>
+    <Transition :duration="550" name="nested">
+      <div class="fixed inset-0 z-50 h-screen w-full" v-if="state.show">
+        <div
+          @click="close()"
+          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+        >
+          <div class="inner flex h-screen">
+            <slot></slot>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </div>
 </template>
 
