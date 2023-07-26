@@ -56,12 +56,12 @@ watch(
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
     <div class="fixed inset-0 z-50 h-full w-full" v-if="state.show">
       <div
-        @click="close()"
         class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-20"
       >
-        <div class="max-w-[90%] xl:max-w-[70%]">
+        <div class="z-20 max-w-[90%] xl:max-w-[70%]">
           <slot></slot>
         </div>
+        <div class="absolute z-10 h-full w-full" @click="close()"></div>
       </div>
     </div>
   </div>

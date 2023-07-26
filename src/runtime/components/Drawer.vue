@@ -54,15 +54,15 @@ watch(
 
 <template>
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <Transition :duration="550" name="nested">
+    <Transition :duration="200" name="nested">
       <div class="fixed inset-0 z-50 h-screen w-full" v-if="state.show">
         <div
-          @click="close()"
           class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
         >
-          <div class="inner flex h-screen">
+          <div class="inner z-20 flex h-screen">
             <slot></slot>
           </div>
+          <div class="absolute z-10 h-full w-full" @click="close()"></div>
         </div>
       </div>
     </Transition>
@@ -76,12 +76,11 @@ watch(
 
 .nested-enter-active .inner,
 .nested-leave-active .inner {
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.2s ease;
 }
 
 .nested-enter-from .inner,
 .nested-leave-to .inner {
-  opacity: 0;
   transform: translateX(-5rem);
 }
 </style>
