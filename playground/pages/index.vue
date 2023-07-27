@@ -2,6 +2,9 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  slider: {
+    default: 70,
+  },
   dialog: {
     base: false,
     side: false,
@@ -87,6 +90,10 @@ const closeDialogBase = () => {
 };
 const closeDialogSide = () => {
   state.dialog.side = false;
+};
+
+const updateSliderValue = (v: number) => {
+  state.slider.default = v;
 };
 
 const closeDialogVariant = (v: { variant: string }) => {
@@ -833,6 +840,15 @@ const carousel = [
               <p>Lorem ipsum.</p>
             </div>
           </t-drawer>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <p>{{ state.slider.default }}</p>
+          <t-slider
+            :defaultValue="70"
+            @update:defaultValue="updateSliderValue"
+          ></t-slider>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
