@@ -23,6 +23,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  variant: {
+    type: String,
+    default: "left",
+  },
   className: {
     type: String,
     default: "",
@@ -41,7 +45,7 @@ if (props.color === null && state.customColor === "") {
 }
 
 const close = () => {
-  emit("close");
+  emit("close", { variant: props.variant });
 };
 
 watch(
@@ -55,7 +59,55 @@ watch(
 <template>
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
     <Transition :duration="200" name="nested">
-      <div class="fixed inset-0 z-50 h-screen w-full" v-if="state.show">
+      <div
+        class="fixed inset-0 z-50 h-full w-full"
+        v-if="state.show && props.variant === 'left'"
+      >
+        <div
+          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+        >
+          <div class="inner z-20 flex h-full">
+            <slot></slot>
+          </div>
+          <div class="absolute z-10 h-full w-full" @click="close()"></div>
+        </div>
+      </div>
+    </Transition>
+    <Transition :duration="200" name="nested">
+      <div
+        class="fixed inset-0 z-50 h-screen w-full"
+        v-if="state.show && props.variant === 'bottom'"
+      >
+        <div
+          class="hide items-bottom absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+        >
+          <div class="inner z-20 flex h-screen">
+            <slot></slot>
+          </div>
+          <div class="absolute z-10 h-full w-full" @click="close()"></div>
+        </div>
+      </div>
+    </Transition>
+    <Transition :duration="200" name="nested">
+      <div
+        class="fixed inset-0 z-50 h-screen w-full"
+        v-if="state.show && props.variant === 'right'"
+      >
+        <div
+          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+        >
+          <div class="inner z-20 flex h-screen">
+            <slot></slot>
+          </div>
+          <div class="absolute z-10 h-full w-full" @click="close()"></div>
+        </div>
+      </div>
+    </Transition>
+    <Transition :duration="200" name="nested">
+      <div
+        class="fixed inset-0 z-50 h-screen w-full"
+        v-if="state.show && props.variant === 'top'"
+      >
         <div
           class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
         >

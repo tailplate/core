@@ -5,6 +5,12 @@ const state = reactive({
   dialog: {
     base: false,
     side: false,
+    variant: {
+      left: false,
+      right: false,
+      bottom: false,
+      top: false,
+    },
   },
   show: {
     one: true,
@@ -81,6 +87,11 @@ const closeDialogBase = () => {
 };
 const closeDialogSide = () => {
   state.dialog.side = false;
+};
+
+const closeDialogVariant = (v: { variant: string }) => {
+  console.log("🚀 ~ file: index.vue:93 ~ closeDialogVariant ~ v:", v);
+  state.dialog.variant[v.variant as keyof typeof state.dialog.variant] = false;
 };
 
 const carousel = [
@@ -719,7 +730,7 @@ const carousel = [
           <t-button @click="state.dialog.base = !state.dialog.base">
             Show
           </t-button>
-          <t-dialog @close="closeDialogBase()" :show="state.dialog.base">
+          <t-dialog @close="closeDialogBase" :show="state.dialog.base">
             <div class="rounded-md bg-slate-100 p-4 shadow">
               <TYpo variant="p">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
@@ -736,7 +747,85 @@ const carousel = [
           <t-button @click="state.dialog.side = !state.dialog.side">
             Drawer
           </t-button>
-          <t-drawer @close="closeDialogSide()" :show="state.dialog.side">
+          <t-drawer @close="closeDialogSide" :show="state.dialog.side">
+            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+            </div>
+          </t-drawer>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <t-button
+            @click="state.dialog.variant.left = !state.dialog.variant.left"
+          >
+            Left
+          </t-button>
+          <t-drawer
+            variant="left"
+            @close="closeDialogVariant"
+            :show="state.dialog.variant.left"
+          >
+            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+            </div>
+          </t-drawer>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button
+            @click="state.dialog.variant.bottom = !state.dialog.variant.bottom"
+          >
+            Bottom
+          </t-button>
+          <t-drawer
+            variant="bottom"
+            @close="closeDialogVariant"
+            :show="state.dialog.variant.bottom"
+          >
+            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+            </div>
+          </t-drawer>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button
+            @click="state.dialog.variant.right = !state.dialog.variant.right"
+          >
+            Right
+          </t-button>
+          <t-drawer
+            variant="right"
+            @close="closeDialogVariant"
+            :show="state.dialog.variant.right"
+          >
+            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+              <p>Lorem ipsum.</p>
+            </div>
+          </t-drawer>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-button
+            @click="state.dialog.variant.top = !state.dialog.variant.top"
+          >
+            Right
+          </t-button>
+          <t-drawer
+            variant="top"
+            @close="closeDialogVariant"
+            :show="state.dialog.variant.top"
+          >
             <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
