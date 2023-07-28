@@ -50,12 +50,15 @@ watch(
 </script>
 
 <template>
-  <div class="slidecontainer">
+  <div class="relative w-full">
+    <label
+      class="pointer-events-none absolute inset-0 z-10 h-full rounded-l-full bg-current"
+    ></label>
     <input
       type="range"
       min="1"
       max="100"
-      class="slider"
+      class="absolute h-2 appearance-none rounded-full bg-red-500"
       id="myRange"
       v-model="state.currentValue"
     />
