@@ -842,11 +842,13 @@ const carousel = [
           </t-drawer>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
-        <div class="flex items-center justify-center">
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
+        <div class="flex w-96 flex-col items-center justify-center space-y-4">
           <p>{{ state.slider.default }}</p>
           <t-slider
+            :min="50"
             :defaultValue="70"
+            :step="2"
             @update:defaultValue="updateSliderValue"
           ></t-slider>
         </div>

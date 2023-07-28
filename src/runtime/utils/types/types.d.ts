@@ -36,6 +36,9 @@ type Color = {
   divide?: {
     primary?: String;
   };
+  range?: {
+    primary?: String;
+  };
 };
 
 declare module "#app" {

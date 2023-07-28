@@ -25,6 +25,18 @@ const props = defineProps({
     type: Number,
     default: 50,
   },
+  min: {
+    type: Number,
+    default: 1,
+  },
+  max: {
+    type: Number,
+    default: 100,
+  },
+  step: {
+    type: Number,
+    default: 1,
+  },
 });
 
 const state = reactive({ customColor: "", currentValue: props.defaultValue });
@@ -51,14 +63,13 @@ watch(
 
 <template>
   <div class="relative w-full">
-    <label
-      class="pointer-events-none absolute inset-0 z-10 h-full rounded-l-full bg-current"
-    ></label>
     <input
       type="range"
-      min="1"
-      max="100"
-      class="absolute h-2 appearance-none rounded-full bg-red-500"
+      :min="props.min"
+      :max="props.max"
+      :step="props.step"
+      class="w-full cursor-pointer appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-[6px] [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:-mt-[4px] [&::-webkit-slider-thumb]:h-[14px] [&::-webkit-slider-thumb]:w-[14px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full"
+      :class="colorSchema.range?.primary"
       id="myRange"
       v-model="state.currentValue"
     />

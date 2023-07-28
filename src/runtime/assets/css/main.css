@@ -1080,6 +1080,10 @@ video {
   background-color: currentColor;
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
 }
@@ -1550,4 +1554,131 @@ video {
   .xl\:max-w-\[30\%\] {
     max-width: 30%;
   }
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:-mt-2::-webkit-slider-runnable-track {
+  margin-top: -0.5rem;
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:h-\[10px\]::-webkit-slider-runnable-track {
+  height: 10px;
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:h-\[8px\]::-webkit-slider-runnable-track {
+  height: 8px;
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:h-\[6px\]::-webkit-slider-runnable-track {
+  height: 6px;
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:rounded-full::-webkit-slider-runnable-track {
+  border-radius: 9999px;
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:border-blue-300::-webkit-slider-runnable-track {
+  --tw-border-opacity: 1;
+  border-color: rgb(147 197 253 / var(--tw-border-opacity));
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:bg-purple-200::-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 213 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:bg-blue-200::-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-slider-runnable-track\]\:bg-blue-300::-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:\[\&\:\:-webkit-slider-runnable-track\]\:bg-blue-600::-webkit-slider-runnable-track) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+:is(.dark .\[\&\:\:-webkit-slider-runnable-track\]\:dark\:bg-blue-600)::-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+:is(.dark .\[\&\:\:-webkit-slider-runnable-track\]\:dark\:bg-blue-500)::-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:-mt-7::-webkit-slider-thumb {
+  margin-top: -1.75rem;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:-mt-\[3px\]::-webkit-slider-thumb {
+  margin-top: -3px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:-mt-\[4px\]::-webkit-slider-thumb {
+  margin-top: -4px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:h-\[14px\]::-webkit-slider-thumb {
+  height: 14px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:w-\[14px\]::-webkit-slider-thumb {
+  width: 14px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:appearance-none::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:rounded-full::-webkit-slider-thumb {
+  border-radius: 9999px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:border-2::-webkit-slider-thumb {
+  border-width: 2px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:border::-webkit-slider-thumb {
+  border-width: 1px;
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:border-blue-500::-webkit-slider-thumb {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:bg-purple-500::-webkit-slider-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 85 247 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:bg-blue-500::-webkit-slider-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:-webkit-slider-thumb\]\:bg-slate-100::-webkit-slider-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:\[\&\:\:-webkit-slider-thumb\]\:bg-blue-200::-webkit-slider-thumb) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+:is(.dark .\[\&\:\:-webkit-slider-thumb\]\:dark\:bg-blue-200)::-webkit-slider-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+.\[\&\:\:dark\:-webkit-slider-runnable-track\]\:bg-blue-600::dark:-webkit-slider-runnable-track {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }

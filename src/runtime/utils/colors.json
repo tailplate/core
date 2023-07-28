@@ -54,6 +54,9 @@
     },
     "divide": {
       "primary": "divide-blue-600"
+    },
+    "range": {
+      "primary": "[&::-webkit-slider-thumb]:bg-blue-500 [&::-webkit-slider-runnable-track]:bg-blue-300 [&::-webkit-slider-thumb]:dark:bg-blue-200 [&::-webkit-slider-runnable-track]:dark:bg-blue-500"
     }
   },
   "red": {
