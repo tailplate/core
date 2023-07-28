@@ -776,7 +776,7 @@ const carousel = [
             @close="closeDialogVariant"
             :show="state.dialog.variant.left"
           >
-            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+            <div class="flex flex-col">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
@@ -795,7 +795,7 @@ const carousel = [
             @close="closeDialogVariant"
             :show="state.dialog.variant.bottom"
           >
-            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+            <div class="flex">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
@@ -814,7 +814,7 @@ const carousel = [
             @close="closeDialogVariant"
             :show="state.dialog.variant.right"
           >
-            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+            <div class="flex-col">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
@@ -826,14 +826,14 @@ const carousel = [
           <t-button
             @click="state.dialog.variant.top = !state.dialog.variant.top"
           >
-            Right
+            top
           </t-button>
           <t-drawer
             variant="top"
             @close="closeDialogVariant"
             :show="state.dialog.variant.top"
           >
-            <div class="w-48 rounded-md bg-slate-100 p-4 shadow">
+            <div class="flex">
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>
               <p>Lorem ipsum.</p>

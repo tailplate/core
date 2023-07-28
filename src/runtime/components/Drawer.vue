@@ -58,60 +58,68 @@ watch(
 
 <template>
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <Transition :duration="200" name="nested">
+    <Transition :duration="200" name="left">
       <div
-        class="fixed inset-0 z-50 h-full w-full"
+        class="fixed inset-0 z-50 h-screen w-auto"
         v-if="state.show && props.variant === 'left'"
       >
         <div
-          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-slate-800 bg-opacity-20"
         >
-          <div class="inner z-20 flex h-full">
+          <div
+            class="inner absolute left-0 z-20 h-screen rounded-md bg-slate-100 p-4 shadow"
+          >
             <slot></slot>
           </div>
           <div class="absolute z-10 h-full w-full" @click="close()"></div>
         </div>
       </div>
     </Transition>
-    <Transition :duration="200" name="nested">
+    <Transition :duration="200" name="bottom">
       <div
-        class="fixed inset-0 z-50 h-screen w-full"
+        class="fixed inset-0 z-50 h-auto w-screen"
         v-if="state.show && props.variant === 'bottom'"
       >
         <div
-          class="hide items-bottom absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+          class="hide items-bottom absolute inset-0 z-10 flex h-auto w-screen bg-slate-800 bg-opacity-20"
         >
-          <div class="inner z-20 flex h-screen">
+          <div
+            class="inner absolute bottom-0 z-20 w-[100vw] rounded-md bg-slate-100 p-4 shadow"
+          >
             <slot></slot>
           </div>
           <div class="absolute z-10 h-full w-full" @click="close()"></div>
         </div>
       </div>
     </Transition>
-    <Transition :duration="200" name="nested">
+    <Transition :duration="200" name="right">
       <div
-        class="fixed inset-0 z-50 h-screen w-full"
+        class="fixed inset-0 z-50 h-screen w-auto"
         v-if="state.show && props.variant === 'right'"
       >
         <div
-          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-slate-800 bg-opacity-20"
         >
-          <div class="inner z-20 flex h-screen">
+          <div
+            class="inner absolute right-0 z-20 h-screen rounded-md bg-slate-100 p-4 shadow"
+          >
             <slot></slot>
           </div>
           <div class="absolute z-10 h-full w-full" @click="close()"></div>
         </div>
       </div>
     </Transition>
-    <Transition :duration="200" name="nested">
+    <Transition :duration="200" name="top">
       <div
-        class="fixed inset-0 z-50 h-screen w-full"
+        class="fixed inset-0 z-50 h-auto w-screen"
         v-if="state.show && props.variant === 'top'"
       >
         <div
-          class="hide items-left absolute inset-0 z-10 flex h-screen w-full bg-slate-800 bg-opacity-20"
+          class="hide items-top absolute inset-0 z-10 flex h-auto w-screen bg-slate-800 bg-opacity-20"
         >
-          <div class="inner z-20 flex h-screen">
+          <div
+            class="inner absolute top-0 z-20 w-[100vw] rounded-md bg-slate-100 p-4 shadow"
+          >
             <slot></slot>
           </div>
           <div class="absolute z-10 h-full w-full" @click="close()"></div>
@@ -126,13 +134,43 @@ watch(
   backdrop-filter: blur(3px);
 }
 
-.nested-enter-active .inner,
-.nested-leave-active .inner {
+.left-enter-active .inner,
+.left-leave-active .inner {
   transition: all 0.2s ease;
 }
 
-.nested-enter-from .inner,
-.nested-leave-to .inner {
+.left-enter-from .inner,
+.left-leave-to .inner {
   transform: translateX(-5rem);
+}
+
+.bottom-enter-active .inner,
+.bottom-leave-active .inner {
+  transition: all 0.2s ease;
+}
+
+.bottom-enter-from .inner,
+.bottom-leave-to .inner {
+  transform: translateY(5rem);
+}
+
+.top-enter-active .inner,
+.top-leave-active .inner {
+  transition: all 0.2s ease;
+}
+
+.top-enter-from .inner,
+.top-leave-to .inner {
+  transform: translateY(-5rem);
+}
+
+.right-enter-active .inner,
+.right-leave-active .inner {
+  transition: all 0.2s ease;
+}
+
+.right-enter-from .inner,
+.right-leave-to .inner {
+  transform: translateX(5rem);
 }
 </style>
