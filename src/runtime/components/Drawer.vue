@@ -34,7 +34,7 @@ const props = defineProps({
 });
 
 let colorSchema: Color;
-let baseColorSchema: Color;
+const baseColorSchema: Color = $baseColor as Color;
 
 if (props.color === null && state.customColor === "") {
   colorSchema = $color;
@@ -64,10 +64,12 @@ watch(
         v-if="state.show && props.variant === 'left'"
       >
         <div
-          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-slate-800 bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-opacity-20 dark:bg-opacity-20"
+          :class="baseColorSchema?.bg?.invert"
         >
           <div
-            class="inner absolute left-0 z-20 h-screen rounded-md bg-slate-100 p-4 shadow"
+            class="inner absolute left-0 z-20 h-screen rounded-md p-4 shadow"
+            :class="baseColorSchema?.bg?.secondary"
           >
             <slot></slot>
           </div>
@@ -81,7 +83,8 @@ watch(
         v-if="state.show && props.variant === 'bottom'"
       >
         <div
-          class="hide items-bottom absolute inset-0 z-10 flex h-auto w-screen bg-slate-800 bg-opacity-20"
+          class="hide items-bottom absolute inset-0 z-10 flex h-auto w-screen bg-opacity-20"
+          :class="baseColorSchema?.bg?.invert"
         >
           <div
             class="inner absolute bottom-0 z-20 w-[100vw] rounded-md bg-slate-100 p-4 shadow"
@@ -131,7 +134,7 @@ watch(
 
 <style>
 .hide {
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
 }
 
 .left-enter-active .inner,

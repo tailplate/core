@@ -8,6 +8,7 @@ type Color = {
   };
   bg?: {
     primary?: String;
+    invert?: String;
     secondary?: String;
     active?: String;
     focusLight?: String;
