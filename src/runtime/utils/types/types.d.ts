@@ -1,6 +1,7 @@
 type Color = {
   text?: {
     primary?: String;
+    invert?: String;
     base?: String;
     light?: String;
     hover?: String;

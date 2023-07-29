@@ -2,6 +2,7 @@
   "base": {
     "text": {
       "primary": "text-slate-800 dark:text-white",
+      "invert": "dark:text-slate-800 text-white",
       "secondary": "text-slate-500 dark:text-slate-300"
     },
     "bg": {

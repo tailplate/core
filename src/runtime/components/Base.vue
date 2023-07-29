@@ -24,7 +24,7 @@ const props = defineProps({
 });
 
 let colorSchema: Color;
-let baseColorSchema: Color;
+let baseColorSchema: Color = $baseColor as Color;
 
 if (props.color === null && state.customColor === "") {
   colorSchema = $color;

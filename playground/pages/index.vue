@@ -5,6 +5,9 @@ const state = reactive({
   slider: {
     default: 70,
   },
+  popover: {
+    default: false,
+  },
   dialog: {
     base: false,
     side: false,
@@ -851,6 +854,18 @@ const carousel = [
             :step="2"
             @update:defaultValue="updateSliderValue"
           ></t-slider>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <t-popover
+            :show="state.popover.default"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsum minus obcaecati? Maxime temporibus distinctio itaque, dolorum vero, quasi natus obcaecati laborum sapiente ut aspernatur."
+          >
+            <t-button @click="state.popover.default = !state.popover.default">
+              <p>Popver</p>
+            </t-button>
+          </t-popover>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
