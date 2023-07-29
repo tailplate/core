@@ -30,7 +30,7 @@ const props = defineProps({
 });
 
 let colorSchema: Color;
-let baseColorSchema: Color;
+let baseColorSchema: Color = $baseColor as Color;
 
 if (props.color === null && state.customColor === "") {
   colorSchema = $color;
@@ -56,7 +56,8 @@ watch(
   <div @wheel.prevent @touchmove.prevent @scroll.prevent>
     <div class="fixed inset-0 z-50 h-full w-full" v-if="state.show">
       <div
-        class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-20"
+        class="hide absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-opacity-20 dark:bg-opacity-20"
+        :class="baseColorSchema?.bg?.invert"
       >
         <div class="z-20 max-w-[90%] xl:max-w-[70%]">
           <slot></slot>

@@ -739,14 +739,14 @@ const carousel = [
           </t-button>
           <t-dialog @close="closeDialogBase" :show="state.dialog.base">
             <div class="rounded-md bg-slate-100 p-4 shadow">
-              <TYpo variant="p">
+              <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
                 obcaecati eos quidem exercitationem impedit sapiente, ipsa eum.
                 Debitis, deleniti suscipit aut neque minus porro at, voluptate
                 autem nihil perspiciatis, voluptatibus reiciendis ab iste.
                 Doloremque eligendi dolorem magnam quaerat temporibus
-                voluptatibus ullam dolor voluptate praesentium a!</TYpo
-              >
+                voluptatibus ullam dolor voluptate praesentium a!
+              </p>
             </div>
           </t-dialog>
         </div>
