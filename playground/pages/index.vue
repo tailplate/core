@@ -902,6 +902,17 @@ const carousel = [
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <t-chip>filled</t-chip>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-chip variant="outlined">outlined</t-chip>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-chip variant="text">text</t-chip>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center">Wrapper</div>
       </div>
     </div>
