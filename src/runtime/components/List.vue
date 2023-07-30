@@ -36,14 +36,7 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div
-    :class="[
-      baseColorSchema?.bg?.primary,
-      baseColorSchema?.border?.primary,
-      props.className,
-    ]"
-    class="flex flex-col space-y-1 p-4"
-  >
+  <div :class="[props.className]" class="flex flex-col space-y-1 p-4">
     <slot />
   </div>
 </template>

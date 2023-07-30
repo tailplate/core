@@ -83,11 +83,12 @@ watch(
         v-if="state.show && props.variant === 'bottom'"
       >
         <div
-          class="hide items-bottom absolute inset-0 z-10 flex h-auto w-screen bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-opacity-20 dark:bg-opacity-20"
           :class="baseColorSchema?.bg?.invert"
         >
           <div
-            class="inner absolute bottom-0 z-20 w-[100vw] rounded-md bg-slate-100 p-4 shadow"
+            class="inner absolute bottom-0 z-20 w-[100vw] rounded-md p-4 shadow"
+            :class="baseColorSchema?.bg?.secondary"
           >
             <slot></slot>
           </div>
@@ -101,10 +102,12 @@ watch(
         v-if="state.show && props.variant === 'right'"
       >
         <div
-          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-slate-800 bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-opacity-20 dark:bg-opacity-20"
+          :class="baseColorSchema?.bg?.invert"
         >
           <div
-            class="inner absolute right-0 z-20 h-screen rounded-md bg-slate-100 p-4 shadow"
+            class="inner absolute right-0 z-20 h-screen rounded-md p-4 shadow"
+            :class="baseColorSchema?.bg?.secondary"
           >
             <slot></slot>
           </div>
@@ -118,10 +121,12 @@ watch(
         v-if="state.show && props.variant === 'top'"
       >
         <div
-          class="hide items-top absolute inset-0 z-10 flex h-auto w-screen bg-slate-800 bg-opacity-20"
+          class="hide absolute inset-0 z-10 flex h-screen w-auto bg-opacity-20 dark:bg-opacity-20"
+          :class="baseColorSchema?.bg?.invert"
         >
           <div
-            class="inner absolute top-0 z-20 w-[100vw] rounded-md bg-slate-100 p-4 shadow"
+            class="inner absolute top-0 z-20 w-[100vw] rounded-md p-4 shadow"
+            :class="baseColorSchema?.bg?.secondary"
           >
             <slot></slot>
           </div>
