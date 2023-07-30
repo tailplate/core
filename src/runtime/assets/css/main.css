@@ -634,6 +634,22 @@ video {
   bottom: 130%;
 }
 
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -805,6 +821,22 @@ video {
 
 .min-w-full {
   min-width: 100%;
+}
+
+.min-w-\[12rem\] {
+  min-width: 12rem;
+}
+
+.min-w-\[13rem\] {
+  min-width: 13rem;
+}
+
+.min-w-\[15rem\] {
+  min-width: 15rem;
+}
+
+.min-w-\[20rem\] {
+  min-width: 20rem;
 }
 
 .max-w-\[90\%\] {

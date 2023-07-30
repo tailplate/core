@@ -533,7 +533,7 @@ const carousel = [
           ></tAvatar>
         </div>
         <div class="flex items-center justify-center">
-          <tBadge>
+          <tBadge rounded>
             <tAvatar
               src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
             ></tAvatar
@@ -557,36 +557,69 @@ const carousel = [
         </div>
       </div>
       <div class="flex items-end space-x-4">
-        <tAvatar
-          size="xs"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
-        <tAvatar
-          size="sm"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
-        <t-badge>
+        <t-badge rounded>
+          <tAvatar
+            size="xs"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge rounded>
+          <tAvatar
+            size="sm"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge rounded>
           <tAvatar
             size="md"
             src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
           ></tAvatar>
         </t-badge>
-        <t-badge>
+        <t-badge rounded size="lg">
           <tAvatar
             size="lg"
             src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
           ></tAvatar>
         </t-badge>
-        <t-badge>
+        <t-badge rounded size="xl">
           <tAvatar
             size="xl"
             src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
           ></tAvatar>
         </t-badge>
-        <tAvatar
-          size="2xl"
-          src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
-        ></tAvatar>
+        <t-badge size="2xl" rounded>
+          <tAvatar
+            size="2xl"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+      </div>
+      <div class="flex items-end space-x-4">
+        <t-badge rounded content="5">
+          <tAvatar
+            size="md"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge rounded content="5">
+          <tAvatar
+            size="lg"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge rounded content="5">
+          <tAvatar
+            size="xl"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
+        <t-badge rounded content="5">
+          <tAvatar
+            variant="rounded"
+            size="2xl"
+            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+          ></tAvatar>
+        </t-badge>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">

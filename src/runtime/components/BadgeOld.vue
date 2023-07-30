@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
-import { reactive, onMounted, watch } from "vue";
+import { reactive, useSlots, onMounted, watch } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
 const { $color } = useNuxtApp();
 
-const state = reactive({ specialColor: "" });
+const slots = useSlots();
+
+const state = reactive({ specialColor: "", fullRounded: false });
 
 const props = defineProps({
   dark: {
@@ -25,17 +27,9 @@ const props = defineProps({
     type: String,
     default: "red",
   },
-  rounded: {
-    type: Boolean,
-    default: false,
-  },
   position: {
     type: String,
     default: "top-right",
-  },
-  size: {
-    type: String,
-    default: "w-3 h-3",
   },
   className: {
     type: String,
@@ -66,8 +60,31 @@ watch(
   }
 );
 
+const callbackFull = () => {
+  state.fullRounded = true;
+};
+
+const checkAvatar = () => {
+  if (slots?.default) {
+    // @ts-expect-error
+    if (slots?.default()[0].type.__name === "Avatar") {
+      if (slots.default()[0].props?.variant) {
+        state.fullRounded = false;
+      } else {
+        state.fullRounded = true;
+      }
+    }
+  } else {
+    state.fullRounded = false;
+  }
+};
+
+onMounted(() => {
+  checkAvatar();
+});
+
 const position = (slot: Boolean, position: String) => {
-  if (slot && !props.rounded) {
+  if (slot && !state.fullRounded) {
     if (position === "top-right") {
       return "-right-2 -top-2";
     } else if (position === "top-left") {
@@ -77,7 +94,7 @@ const position = (slot: Boolean, position: String) => {
     } else if (position === "bottom-right") {
       return "-right-2 -bottom-2";
     }
-  } else if (!slot && props.rounded) {
+  } else if (state.fullRounded) {
     if (position === "top-right") {
       return "-right-0 -top-0";
     } else if (position === "top-left") {
@@ -99,22 +116,12 @@ const position = (slot: Boolean, position: String) => {
     }
   }
 };
-
-const size = () => {
-  if (props.size === "xl" || props.size === "2xl") {
-    return "w-5 h-5 ";
-  } else if (props.size === "lg") {
-    return "w-4 h-4";
-  } else {
-    return "w-3 h-3";
-  }
-};
 </script>
 
 <template>
   <div class="relative flex" :class="[!!props.content ? 'mx-2' : '']">
     <div
-      class="absolute z-50 flex items-center justify-center rounded-full border text-xs font-normal"
+      class="absolute z-50 flex h-3 w-3 items-center justify-center rounded-full border text-xs font-normal"
       :class="[
         !!props.content ? 'p-3' : '',
         props.border
@@ -124,12 +131,11 @@ const size = () => {
         colorSchema?.bg?.primary,
         colorSchema?.text?.base,
         props.className,
-        size(),
       ]"
     >
       <p>{{ props.content }}</p>
     </div>
-    <div class="z-0">
+    <div class="z-0" @avatar-full="callbackFull">
       <slot />
     </div>
   </div>

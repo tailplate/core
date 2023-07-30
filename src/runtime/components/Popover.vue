@@ -55,7 +55,7 @@ watch(
     <Transition>
       <p
         v-if="state.show"
-        class="absolute bottom-[120%] left-1/2 z-50 w-[12rem] -translate-x-[50%] rounded-md border bg-opacity-80 p-4 text-center text-xs shadow"
+        class="absolute bottom-[120%] left-1/2 z-50 min-w-[20rem] -translate-x-[50%] rounded-md border bg-opacity-80 p-4 text-center text-xs shadow"
         :class="[
           baseColorSchema?.bg?.primary,
           baseColorSchema?.text?.primary,
