@@ -913,7 +913,22 @@ const carousel = [
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
-        <div class="flex items-center justify-center">Wrapper</div>
+        <div class="flex items-center justify-center">
+          <t-list className="w-96">
+            <t-list-item>
+              <t-ypo variant="p">Inbox</t-ypo>
+            </t-list-item>
+            <t-list-item>
+              <t-ypo variant="p">Draft</t-ypo>
+            </t-list-item>
+            <t-list-item>
+              <t-ypo variant="p">Trash</t-ypo>
+            </t-list-item>
+          </t-list>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">Wraper</div>
       </div>
     </div>
   </t-dark>

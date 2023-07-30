@@ -20,6 +20,7 @@ type Color = {
     groupHover?: String;
     checked?: String;
     hover?: String;
+    hoverLight?: String;
     success?: String;
     danger?: String;
   };
