@@ -14,7 +14,7 @@ const state = reactive({
 });
 
 export interface Props {
-  sources: Array<{ src: string; alt: string; type: string }>;
+  sources: Array<{ src: string; alt: string; type?: string }>;
   dark?: boolean | null;
   color?: unknown | String | null;
   className?: string;

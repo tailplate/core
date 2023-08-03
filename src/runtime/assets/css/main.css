@@ -1626,6 +1626,10 @@ video {
   background-color: transparent;
 }
 
+.\[\&\:\:-webkit-progress-bar\]\:w-full::-webkit-progress-bar {
+  width: 100%;
+}
+
 .\[\&\:\:-webkit-progress-bar\]\:rounded-lg::-webkit-progress-bar {
   border-radius: 0.5rem;
 }

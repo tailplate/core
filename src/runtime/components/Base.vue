@@ -6,8 +6,6 @@ import json from "../utils/colors.json";
 
 const { $color, $baseColor } = useNuxtApp();
 
-const state = reactive({ customColor: "" });
-
 const props = defineProps({
   dark: {
     type: Boolean,
@@ -22,6 +20,8 @@ const props = defineProps({
     default: "",
   },
 });
+
+const state = reactive({ customColor: "" });
 
 let colorSchema: Color;
 let baseColorSchema: Color = $baseColor as Color;

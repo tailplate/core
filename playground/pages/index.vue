@@ -105,11 +105,11 @@ const closeDialogVariant = (v: { variant: string }) => {
 };
 
 const carousel = [
-  { src: "/img/1.jpg", alt: "Test" },
-  { src: "/img/2.jpg", alt: "Test" },
-  { src: "/img/3.jpg", alt: "Test" },
+  { src: "/img/1.jpg", alt: "Test", type: "image" },
+  { src: "/img/2.jpg", alt: "Test", type: "image" },
+  { src: "/img/3.jpg", alt: "Test", type: "image" },
   { src: "/videos/video.mp4", alt: "Test", type: "video" },
-  { src: "/img/4.jpg", alt: "Test" },
+  { src: "/img/4.jpg", alt: "Test", type: "image" },
 ];
 </script>
 
@@ -928,8 +928,8 @@ const carousel = [
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
-        <div class="flex items-center justify-center">
-          <t-progress-bar></t-progress-bar>
+        <div class="flex w-96 items-center justify-center">
+          <t-progress-bar :current-value="70"></t-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">

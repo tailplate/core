@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 import { Color } from "../utils/types/types";
 import json from "../utils/colors.json";
 
 const { $color, $baseColor } = useNuxtApp();
-
-const state = reactive({ customColor: "" });
 
 const props = defineProps({
   dark: {
@@ -35,6 +33,8 @@ const props = defineProps({
   },
 });
 
+const state = reactive({ customColor: "", currentValue: props.currentValue });
+
 let colorSchema: Color;
 let baseColorSchema: Color = $baseColor as Color;
 
@@ -45,22 +45,29 @@ if (props.color === null && state.customColor === "") {
     ? (colorSchema = json[state.customColor as keyof typeof json])
     : (colorSchema = json[props.color as keyof typeof json]);
 }
+
+watch(
+  () => props.currentValue,
+  (value) => {
+    state.currentValue = value;
+  }
+);
 </script>
 
 <template>
-  <div class="relative flex w-full">
+  <div class="relative flex w-full" :class="props.className">
     <progress
-      class="relative [&::-moz-progress-bar]:bg-transparent [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-transparent"
+      class="relative w-full [&::-moz-progress-bar]:bg-transparent [&::-webkit-progress-bar]:w-full [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-transparent"
       :id="props.id"
       :max="props.maxValue"
-      :value="props.currentValue"
+      :value="state.currentValue"
     ></progress>
     <div
-      class="absolute flex items-center justify-end rounded-full px-2"
-      :style="'width:' + props.currentValue + '%'"
+      class="absolute flex w-full items-center justify-end rounded-full px-2 duration-100"
+      :style="'width:' + state.currentValue + '%'"
       :class="[baseColorSchema?.text?.invert, colorSchema?.bg?.primary]"
     >
-      <p class="text-xs">{{ props.currentValue }} %</p>
+      <p class="text-xs">{{ state.currentValue }} %</p>
     </div>
   </div>
 </template>
