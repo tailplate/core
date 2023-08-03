@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  step: 0,
   slider: {
     default: 70,
   },
@@ -97,6 +98,14 @@ const closeDialogSide = () => {
 
 const updateSliderValue = (v: number) => {
   state.slider.default = v;
+};
+
+const nextStep = () => {
+  if (state.step < 2) state.step += 1;
+};
+
+const prevStep = () => {
+  if (state.step > 0) state.step -= 1;
 };
 
 const closeDialogVariant = (v: { variant: string }) => {
@@ -930,6 +939,19 @@ const carousel = [
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex w-96 items-center justify-center">
           <t-progress-bar :current-value="70"></t-progress-bar>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex w-96 flex-col items-center justify-center space-y-8">
+          <t-stepper>
+            <t-step :step="0" />
+            <t-step :step="1" :isActive="state.step >= 1" />
+            <t-step :step="2" :isActive="state.step >= 2" />
+          </t-stepper>
+          <div class="flex w-full justify-between">
+            <t-button @click="prevStep()">Prev</t-button>
+            <t-button @click="nextStep()">Next</t-button>
+          </div>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">

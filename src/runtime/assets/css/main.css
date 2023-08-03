@@ -650,6 +650,10 @@ video {
   top: 0.25rem;
 }
 
+.-right-3 {
+  right: -0.75rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -756,6 +760,10 @@ video {
   height: 100vh;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -822,6 +830,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[110\%\] {
+  width: 110%;
 }
 
 .min-w-full {
