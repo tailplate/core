@@ -57,11 +57,22 @@ watch(
   <div class="relative flex w-full items-center justify-end">
     <div
       v-if="props.step !== 0"
-      class="h-1 w-full"
-      :class="[state.isActive ? colorSchema?.bg?.primary : 'bg-slate-300']"
-    ></div>
+      class="relative h-1 w-full overflow-hidden duration-300"
+    >
+      <div
+        class="absolute h-full w-full bg-slate-300 duration-300"
+        :class="[state.isActive ? '-right-[100%]' : 'right-0']"
+      ></div>
+      <div
+        class="absolute h-full w-full duration-300"
+        :class="[
+          state.isActive ? 'left-0' : '-left-[100%]',
+          colorSchema?.bg?.primary,
+        ]"
+      ></div>
+    </div>
     <div
-      class="h-4 w-4 rounded-full p-2"
+      class="h-4 w-4 rounded-full p-2 delay-150 duration-150"
       :class="[state.isActive ? colorSchema?.bg?.primary : 'bg-slate-300']"
     >
       <slot />
