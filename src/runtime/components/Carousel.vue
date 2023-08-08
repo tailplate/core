@@ -44,16 +44,16 @@ if (props.color === null && state.customColor === "") {
 
 const next = () => {
   if (state.currentSlide < props.sources.length) {
-    state.calc = state.currentSlide * 800;
+    state.calc = state.currentSlide * 100;
     if (state.currentSlide < props.sources.length + 1) state.currentSlide++;
-    return (state.moved = `transform: translate(-${state.calc}px);`);
+    return (state.moved = `transform: translate(-${state.calc}%);`);
   }
 };
 const previous = () => {
   if (state.currentSlide <= props.sources.length && state.currentSlide != 1) {
-    state.calc = state.calc - 800;
+    state.calc = state.calc - 100;
     if (state.currentSlide > 1) state.currentSlide--;
-    return (state.moved = `transform: translate(-${state.calc}px);`);
+    return (state.moved = `transform: translate(-${state.calc}%);`);
   }
 };
 </script>
@@ -95,6 +95,7 @@ const previous = () => {
           v-if="item.type === 'video'"
           :src="item.src"
           autoplay
+          muted
           loop
           class="absolute z-0 h-full w-full object-cover"
         ></video>
@@ -102,7 +103,7 @@ const previous = () => {
           v-else
           :src="item.src"
           :alt="item.alt"
-          class="h-full min-w-full object-cover"
+          class="h-full w-full object-cover"
         />
       </div>
     </div>
