@@ -54,7 +54,10 @@ watch(
 </script>
 
 <template>
-  <div class="relative flex w-full items-center justify-end">
+  <div
+    class="relative flex items-center justify-end"
+    :class="[props.step === 0 ? 'w-auto' : 'w-full']"
+  >
     <div
       v-if="props.step !== 0"
       class="relative h-1 w-full overflow-hidden duration-300"

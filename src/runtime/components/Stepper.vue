@@ -36,7 +36,7 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="flex w-full justify-between">
+  <div class="flex w-full justify-center">
     <slot />
   </div>
 </template>
