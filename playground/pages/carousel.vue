@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
-const darkMode = () => (state.dark = !state.dark);
-
 const state = reactive({
   dark: false,
 });
 
-let carousel: object;
-
-carousel = [
-  { src: "/img/1.jpg", alt: "lorem" },
-  { src: "/img/2.jpg", alt: "lorem" },
-  { src: "/videos/video.mp4", alt: "lorem", type: "video" },
-  { src: "/img/3.jpg", alt: "lorem" },
-  { src: "/img/4.jpg", alt: "lorem" },
+const carousel = [
+  { src: "/img/1.jpg", alt: "This an alt text.", type: "image" },
+  { src: "/img/2.jpg", alt: "This an alt text.", type: "image" },
+  { src: "/img/3.jpg", alt: "This an alt text.", type: "image" },
+  { src: "/videos/video.mp4", alt: "This an alt text.", type: "video" },
+  { src: "/img/4.jpg", alt: "Test", type: "image" },
 ];
+
+const darkMode = () => (state.dark = !state.dark);
 </script>
 
 <template>
@@ -58,7 +56,7 @@ carousel = [
     </t-icon-button>
     <div class="grid grid-cols-1 gap-12">
       <div class="flex items-center justify-center">
-        <t-carousel :sources="carousel"></t-carousel>
+        <t-carousel :items="carousel"></t-carousel>
       </div>
     </div>
   </t-dark>

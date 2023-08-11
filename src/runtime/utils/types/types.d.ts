@@ -9,6 +9,7 @@ type Color = {
   };
   bg?: {
     primary?: String;
+    gray?: String;
     invert?: String;
     secondary?: String;
     active?: String;

@@ -14,7 +14,7 @@ const state = reactive({
 });
 
 export interface Props {
-  sources: Array<{ src: string; alt: string; type?: string }>;
+  items: Array<{ src: string; alt: string; type?: string }>;
   dark?: boolean | null;
   color?: unknown | String | null;
   className?: string;
@@ -22,7 +22,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   dark: null,
-  sources: () => [
+  items: () => [
     {
       src: "https://placehold.co/800x400",
       alt: "placeholder",
@@ -43,14 +43,14 @@ if (props.color === null && state.customColor === "") {
 }
 
 const next = () => {
-  if (state.currentSlide < props.sources.length) {
+  if (state.currentSlide < props.items.length) {
     state.calc = state.currentSlide * 100;
-    if (state.currentSlide < props.sources.length + 1) state.currentSlide++;
+    if (state.currentSlide < props.items.length + 1) state.currentSlide++;
     return (state.moved = `transform: translate(-${state.calc}%);`);
   }
 };
 const previous = () => {
-  if (state.currentSlide <= props.sources.length && state.currentSlide != 1) {
+  if (state.currentSlide <= props.items.length && state.currentSlide != 1) {
     state.calc = state.calc - 100;
     if (state.currentSlide > 1) state.currentSlide--;
     return (state.moved = `transform: translate(-${state.calc}%);`);
@@ -87,7 +87,7 @@ const previous = () => {
       style="transition-duration: 0.5s"
     >
       <div
-        v-for="item in props.sources"
+        v-for="item in props.items"
         :key="item.src"
         class="relative h-full min-w-full"
       >
@@ -128,7 +128,7 @@ const previous = () => {
     </div>
     <div class="absolute bottom-4 z-20 flex space-x-2">
       <div
-        v-for="(item, index) in props.sources"
+        v-for="(item, index) in props.items"
         :key="item.src"
         class="h-2 rounded-full bg-white duration-150"
         :class="

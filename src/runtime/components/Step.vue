@@ -63,8 +63,11 @@ watch(
       class="relative h-1 w-full overflow-hidden duration-300"
     >
       <div
-        class="absolute h-full w-full bg-slate-300 duration-300"
-        :class="[state.isActive ? '-right-[100%]' : 'right-0']"
+        class="absolute h-full w-full duration-300"
+        :class="[
+          state.isActive ? '-right-[100%]' : 'right-0',
+          baseColorSchema?.bg?.gray,
+        ]"
       ></div>
       <div
         class="absolute h-full w-full duration-300"
@@ -75,8 +78,13 @@ watch(
       ></div>
     </div>
     <div
-      class="h-4 w-4 rounded-full p-2 delay-150 duration-150"
-      :class="[state.isActive ? colorSchema?.bg?.primary : 'bg-slate-300']"
+      class="flex min-h-[1rem] min-w-[1rem] shrink-0 grow-0 items-center justify-center rounded-full p-2 delay-150 duration-150"
+      :class="[
+        state.isActive ? colorSchema?.bg?.primary : baseColorSchema?.bg?.gray,
+        state.isActive
+          ? baseColorSchema?.text?.invert
+          : baseColorSchema?.text?.primary,
+      ]"
     >
       <slot />
     </div>
