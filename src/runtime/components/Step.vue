@@ -78,7 +78,7 @@ watch(
       ></div>
     </div>
     <div
-      class="flex min-h-[1rem] min-w-[1rem] shrink-0 grow-0 items-center justify-center rounded-full p-2 delay-150 duration-150"
+      class="flex aspect-square min-h-[1rem] min-w-[1rem] shrink-0 grow-0 items-center justify-center rounded-full p-2 delay-150 duration-150"
       :class="[
         state.isActive ? colorSchema?.bg?.primary : baseColorSchema?.bg?.gray,
         state.isActive
