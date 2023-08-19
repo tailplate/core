@@ -7,7 +7,8 @@
     },
     "bg": {
       "primary": "bg-white dark:bg-slate-800",
-      "gray": "bg-slate-300 dark:bg-slate-600",
+      "gray": "bg-slate-200 dark:bg-slate-600",
+      "lightGray": "bg-slate-100 dark:bg-slate-600",
       "invert": "bg-slate-900 dark:bg-slate-300",
       "secondary": "bg-white dark:bg-slate-900",
       "active": "active:bg-gray-200 dark:active:bg-slate-700",

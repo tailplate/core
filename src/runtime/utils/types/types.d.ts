@@ -10,6 +10,7 @@ type Color = {
   bg?: {
     primary?: String;
     gray?: String;
+    lightGray?: String;
     invert?: String;
     secondary?: String;
     active?: String;

@@ -3,6 +3,12 @@ import { reactive } from "vue";
 
 const state = reactive({
   step: 0,
+  tabs: {
+    default: {
+      active: 0,
+      currentIndex: 0,
+    },
+  },
   slider: {
     default: 70,
   },
@@ -74,6 +80,29 @@ const state = reactive({
   },
 });
 
+const tabs = [
+  {
+    label: "Marketing",
+    value: "marketing",
+    desc: "Tackle Yellow Jack matey quarter cutlass bilged on her anchor grog blossom chase guns aye belaying pin. Pieces of Eight weigh anchor dance the hempen jig code of conduct hornswaggle lass rigging smartly bucko flogging. Letter of Marque skysail jack Jolly Roger Arr ye heave down tender aye transom.",
+  },
+  {
+    label: "Deployment",
+    value: "deployment",
+    desc: "Warp hands strike colors come about Nelsons folly rutters pillage Davy Jones' Locker gabion hempen halter. Snow lee lugger rum lateen sail knave belaying pin sloop clipper wench. Topmast Jack Tar Spanish Main scuppers Blimey clap of thunder careen brigantine Cat o'nine tails grog blossom.",
+  },
+  {
+    label: "Activate",
+    value: "activate",
+    desc: "Knave loot bucko Pieces of Eight draft parley avast scurvy gun nipperkin. Clipper league brigantine coffer American Main gangplank heave to keelhaul nipper dead men tell no tales. Sea Legs chantey log dance the hempen jig Barbary Coast crack Jennys tea cup nipper hardtack deadlights yo-ho-ho.",
+  },
+  {
+    label: "Deleted",
+    value: "deleted",
+    desc: "List of all deleted users.",
+  },
+];
+
 const darkMode = () => (state.dark = !state.dark);
 
 const callback = (obj: { id: string; bool: boolean }) => {
@@ -109,8 +138,11 @@ const prevStep = () => {
 };
 
 const closeDialogVariant = (v: { variant: string }) => {
-  console.log("🚀 ~ file: index.vue:93 ~ closeDialogVariant ~ v:", v);
   state.dialog.variant[v.variant as keyof typeof state.dialog.variant] = false;
+};
+
+const updateTabsIndex = (index: number) => {
+  state.tabs.default.currentIndex = index;
 };
 
 const carousel = [
@@ -422,16 +454,16 @@ const carousel = [
           <div v-for="item in state.toggleMode" :key="item.id">
             <tCheckbox :id="item.id" @toggled="callbackToggle">
               <div>
-                <TYpo
+                <t-typo
                   variant="h4"
                   class="text-lg font-bold"
                   :className="item.done ? 'line-through' : ''"
                 >
                   {{ item.name }}
-                </TYpo>
-                <TYpo variant="small">
+                </t-typo>
+                <t-typo variant="small">
                   {{ item.description }}
-                </TYpo>
+                </t-typo>
               </div>
             </tCheckbox>
           </div>
@@ -501,25 +533,25 @@ const carousel = [
         </div>
       </div>
       <div class="flex flex-col justify-center space-y-12 py-12">
-        <tYpo variant="h1"> Tailplate is Awesome </tYpo>
-        <TYpo variant="h2"> Tailplate is Awesome </TYpo>
-        <TYpo variant="h3"> Tailplate is Awesome </TYpo>
-        <TYpo variant="h4"> Tailplate is Awesome </TYpo>
-        <TYpo variant="h5"> Tailplate is Awesome </TYpo>
-        <TYpo variant="lead"> Tailplate is Awesome </TYpo>
-        <TYpo variant="p"> Tailplate is Awesome </TYpo>
-        <TYpo variant="xs"> Tailplate is Awesome </TYpo>
+        <t-typo variant="h1"> Tailplate is Awesome </t-typo>
+        <t-typo variant="h2"> Tailplate is Awesome </t-typo>
+        <t-typo variant="h3"> Tailplate is Awesome </t-typo>
+        <t-typo variant="h4"> Tailplate is Awesome </t-typo>
+        <t-typo variant="h5"> Tailplate is Awesome </t-typo>
+        <t-typo variant="lead"> Tailplate is Awesome </t-typo>
+        <t-typo variant="p"> Tailplate is Awesome </t-typo>
+        <t-typo variant="xs"> Tailplate is Awesome </t-typo>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div></div>
         <div class="flex flex-col justify-center space-y-4">
-          <TYpo variant="h2">
+          <t-typo variant="h2">
             A new TailwindCSS components library for Nuxt.
-          </TYpo>
-          <TYpo variant="lead">
+          </t-typo>
+          <t-typo variant="lead">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
             ipsam necessitatibus cum ratione amet voluptates dolorum.
-          </TYpo>
+          </t-typo>
         </div>
         <div></div>
       </div>
@@ -690,7 +722,7 @@ const carousel = [
             Open
           </t-button>
           <t-collapse :open="state.openCollapse">
-            <t-ypo variant="h3">Hello, world.</t-ypo>
+            <t-typo variant="h3">Hello, world.</t-typo>
           </t-collapse>
         </div>
       </div>
@@ -925,13 +957,13 @@ const carousel = [
         <div class="flex items-center justify-center">
           <t-list className="w-96">
             <t-list-item>
-              <t-ypo variant="p">Inbox</t-ypo>
+              <t-typo variant="p">Inbox</t-typo>
             </t-list-item>
             <t-list-item>
-              <t-ypo variant="p">Draft</t-ypo>
+              <t-typo variant="p">Draft</t-typo>
             </t-list-item>
             <t-list-item>
-              <t-ypo variant="p">Trash</t-ypo>
+              <t-typo variant="p">Trash</t-typo>
             </t-list-item>
           </t-list>
         </div>
@@ -1018,6 +1050,29 @@ const carousel = [
             <t-button @click="prevStep()">Prev</t-button>
             <t-button @click="nextStep()">Next</t-button>
           </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
+        <div class="flex w-[600px] items-center justify-center">
+          <t-tabs>
+            <t-tabs-header>
+              <t-tab
+                @update:currentIndex="updateTabsIndex"
+                v-for="(item, index) in tabs"
+                :key="item.value"
+                @click="state.tabs.default.active = index"
+                :index="index"
+                :active="index === state.tabs.default.active"
+              >
+                <t-typo variant="p">{{ item.label }}</t-typo>
+              </t-tab>
+            </t-tabs-header>
+            <t-tabs-body>
+              <t-typo variant="p">
+                {{ tabs[state.tabs.default.currentIndex].desc }}
+              </t-typo>
+            </t-tabs-body>
+          </t-tabs>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
