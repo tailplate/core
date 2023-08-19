@@ -1391,6 +1391,10 @@ video {
   transition-duration: 300ms;
 }
 
+.visited\:text-blue-300:visited {
+  color: rgb(147 197 253 );
+}
+
 .checked\:border-blue-500:checked {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));

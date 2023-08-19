@@ -70,16 +70,16 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
         <div v-for="item in state.toggleMode" :key="item.id">
           <tCheckbox :id="item.id" @toggled="callbackToggle">
             <div>
-              <TYpo
+              <t-typo
                 variant="h5"
                 class="text-lg font-bold"
                 :className="item.done ? 'line-through' : ''"
               >
                 {{ item.name }}
-              </TYpo>
-              <TYpo variant="small">
+              </t-typo>
+              <t-typo variant="small">
                 {{ item.description }}
-              </TYpo>
+              </t-typo>
             </div>
           </tCheckbox>
         </div>

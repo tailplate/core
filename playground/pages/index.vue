@@ -1076,6 +1076,24 @@ const carousel = [
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
+          <p>
+            Lorem ipsum dolor sit amet
+            <t-link to="https://google.com"
+              >consectetur adipisicing elit</t-link
+            >
+            . Ratione tempora quasi vitae numquam accusantium accusamus.
+          </p>
+        </div>
+        <div class="flex items-center justify-center">
+          <p>
+            Lorem ipsum dolor sit amet
+            <t-link to="demo">consectetur adipisicing elit</t-link>
+            . Ratione tempora quasi vitae numquam accusantium accusamus.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center">Wraper</div>
       </div>
     </div>

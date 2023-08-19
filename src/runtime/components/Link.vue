@@ -6,8 +6,6 @@ import json from "../utils/colors.json";
 
 const { $color, $baseColor } = useNuxtApp();
 
-const state = reactive({ customColor: "" });
-
 const props = defineProps({
   dark: {
     type: Boolean,
@@ -17,14 +15,20 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  to: {
+    type: String,
+    default: "#",
+  },
   className: {
     type: String,
     default: "",
   },
 });
 
+const state = reactive({ customColor: "" });
+
 let colorSchema: Color;
-let baseColorSchema: Color;
+let baseColorSchema: Color = $baseColor as Color;
 
 if (props.color === null && state.customColor === "") {
   colorSchema = $color;
@@ -36,10 +40,11 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="w-full cursor-pointer">
-    <t-typo variant="h4">
-      <slot />
-      <div class="mt-3 w-full border-t border-slate-300"></div>
-    </t-typo>
-  </div>
+  <nuxt-link
+    :to="props.to"
+    class="font-semibold duration-100"
+    :class="[colorSchema?.text?.hover, colorSchema?.text?.primary]"
+  >
+    <slot />
+  </nuxt-link>
 </template>

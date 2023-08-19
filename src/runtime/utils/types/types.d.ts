@@ -4,6 +4,7 @@ type Color = {
     invert?: String;
     base?: String;
     light?: String;
+    visited?: String;
     hover?: String;
     secondary?: String;
   };

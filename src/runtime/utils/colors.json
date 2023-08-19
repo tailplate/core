@@ -26,6 +26,7 @@
     "text": {
       "primary": "text-blue-500",
       "light": "text-blue-300",
+      "visited": "visited:text-blue-300",
       "hover": "hover:text-blue-300 dark:hover:text-blue-700",
       "base": "text-slate-100",
       "secondary": "text-blue-700"
