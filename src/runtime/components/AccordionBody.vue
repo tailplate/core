@@ -51,9 +51,9 @@ watch(
 <template>
   <Transition>
     <div v-if="state.show" class="mt-4">
-      <t-ypo variant="small" class="text-slate-500">
+      <t-typo variant="small" class="text-slate-500">
         <slot />
-      </t-ypo>
+      </t-typo>
     </div>
   </Transition>
 </template>

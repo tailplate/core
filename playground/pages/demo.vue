@@ -60,9 +60,9 @@ const callbackToggle = (obj: { id: string; bool: boolean }) => {
           />
         </t-badge>
         <div class="flex flex-col items-center">
-          <t-ypo variant="h3">Jane Doe</t-ypo>
-          <t-ypo variant="small" class-name="text-slate-300"
-            >Product Manager</t-ypo
+          <t-typo variant="h3">Jane Doe</t-typo>
+          <t-typo variant="small" class-name="text-slate-300"
+            >Product Manager</t-typo
           >
         </div>
       </div>
