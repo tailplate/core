@@ -64,8 +64,13 @@ const changeItem = (index: number) => {
 <template>
   <div class="relative w-full">
     <button
-      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border-2 py-2 pl-6 pr-2"
-      :class="[baseColorSchema?.bg?.primary, baseColorSchema?.border?.primary]"
+      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border-2 py-2 pl-6 pr-2 duration-200"
+      :class="[
+        baseColorSchema?.bg?.primary,
+        state.show
+          ? baseColorSchema?.border?.secondary
+          : baseColorSchema?.border?.primary,
+      ]"
       @click="state.show = !state.show"
     >
       <t-typo variant="p">{{ props.list[state.isSelected].label }}</t-typo>
