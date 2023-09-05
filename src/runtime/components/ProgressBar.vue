@@ -67,7 +67,7 @@ watch(
       :style="'width:' + state.currentValue + '%'"
       :class="[baseColorSchema?.text?.invert, colorSchema?.bg?.primary]"
     >
-      <p class="text-xs">{{ state.currentValue }} %</p>
+      <p class="font-mono text-xs font-bold">{{ state.currentValue }} %</p>
     </div>
   </div>
 </template>

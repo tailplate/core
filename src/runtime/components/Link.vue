@@ -42,7 +42,7 @@ if (props.color === null && state.customColor === "") {
 <template>
   <nuxt-link
     :to="props.to"
-    class="font-semibold duration-100"
+    class="font-light duration-100"
     :class="[colorSchema?.text?.hover, colorSchema?.text?.primary]"
   >
     <slot />

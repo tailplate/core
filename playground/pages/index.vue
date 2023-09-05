@@ -103,6 +103,24 @@ const tabs = [
   },
 ];
 
+const selectedBase = [
+  {
+    label: "Banana 🍌",
+    value: "banana",
+  },
+  {
+    label: "Avocado 🥑",
+    value: "avocado",
+    selected: true,
+  },
+  {
+    label: "Melon 🍈",
+    value: "melon",
+  },
+];
+
+const updateSelectedBase = () => {};
+
 const darkMode = () => (state.dark = !state.dark);
 
 const callback = (obj: { id: string; bool: boolean }) => {
@@ -1091,6 +1109,16 @@ const carousel = [
             <t-link to="demo">consectetur adipisicing elit</t-link>
             . Ratione tempora quasi vitae numquam accusantium accusamus.
           </p>
+        </div>
+      </div>
+      <div
+        class="grid h-96 grid-cols-3 items-center justify-center gap-4 py-12"
+      >
+        <div class="flex w-48 items-center justify-center">
+          <t-select
+            :list="selectedBase"
+            @update:selected="updateSelectedBase"
+          />
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
