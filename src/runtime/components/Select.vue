@@ -55,6 +55,11 @@ props.list.forEach((element, index) => {
   }
 });
 
+/**
+ * Change the selected item and hide it.
+ *
+ * @param {number} index - The index of the item to be selected.
+ */
 const changeItem = (index: number) => {
   state.isSelected = index;
   state.show = false;
@@ -64,7 +69,7 @@ const changeItem = (index: number) => {
 <template>
   <div class="relative w-full">
     <button
-      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border-2 py-2 pl-6 pr-2 duration-200"
+      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border py-2 pl-6 pr-2 duration-200"
       :class="[
         baseColorSchema?.bg?.primary,
         state.show
@@ -73,7 +78,9 @@ const changeItem = (index: number) => {
       ]"
       @click="state.show = !state.show"
     >
-      <t-typo variant="p">{{ props.list[state.isSelected].label }}</t-typo>
+      <p :class="baseColorSchema?.text?.secondary">
+        {{ props.list[state.isSelected].label }}
+      </p>
       <svg
         v-if="props.arrow"
         xmlns="http://www.w3.org/2000/svg"
@@ -101,12 +108,14 @@ const changeItem = (index: number) => {
     >
       <div
         @click="changeItem(index)"
-        class="m-2 cursor-pointer rounded px-6 py-1 duration-150"
+        class="m-1 cursor-pointer rounded px-6 py-1 duration-150"
         :class="[colorSchema?.bg?.hoverPrimary]"
         v-for="(item, index) in props.list"
         :key="item.value"
       >
-        <t-typo variant="small">{{ item.label }}</t-typo>
+        <p class="text-sm" :class="baseColorSchema?.text?.secondary">
+          {{ item.label }}
+        </p>
       </div>
     </div>
   </div>

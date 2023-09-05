@@ -7,6 +7,7 @@ type Color = {
     visited?: String;
     hover?: String;
     secondary?: String;
+    peerFocus?: String;
   };
   bg?: {
     primary?: String;
@@ -33,6 +34,7 @@ type Color = {
     checked?: String;
     secondary?: String;
     focus?: String;
+    peerFocus?: String;
   };
   shadow?: {
     hover?: String;
