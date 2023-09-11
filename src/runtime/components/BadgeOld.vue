@@ -2,7 +2,7 @@
 import { useNuxtApp } from "#app";
 import { reactive, useSlots, onMounted, watch } from "vue";
 import { Color } from "../utils/types/types";
-import json from "../utils/colors.json";
+import json from "../utils/colors/colors.json";
 
 const { $color } = useNuxtApp();
 

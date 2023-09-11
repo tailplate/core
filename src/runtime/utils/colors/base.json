@@ -1,0 +1,23 @@
+{
+  "text": {
+    "primary": "text-slate-800 dark:text-white",
+    "invert": "dark:text-slate-800 text-white",
+    "secondary": "text-slate-500 dark:text-slate-300"
+  },
+  "bg": {
+    "primary": "bg-white dark:bg-slate-800",
+    "gray": "bg-slate-200 dark:bg-slate-600",
+    "lightGray": "bg-slate-100 dark:bg-slate-600",
+    "invert": "bg-slate-900 dark:bg-slate-300",
+    "secondary": "bg-white dark:bg-slate-900",
+    "active": "active:bg-gray-200 dark:active:bg-slate-700",
+    "success": "bg-green-400",
+    "danger": "bg-red-400",
+    "hoverLight": "hover:bg-gray-200 dark:hover:bg-slate-700"
+  },
+  "shadow": {},
+  "border": {
+    "primary": "border-slate-200 dark:border-slate-700",
+    "secondary": "border-slate-500 dark:border-slate-300"
+  }
+}

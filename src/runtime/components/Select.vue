@@ -2,7 +2,7 @@
 import { useNuxtApp } from "#app";
 import { reactive } from "vue";
 import { Color } from "../utils/types/types";
-import json from "../utils/colors.json";
+import json from "../utils/colors/colors.json";
 
 const { $color, $baseColor } = useNuxtApp();
 
@@ -67,13 +67,13 @@ const changeItem = (index: number) => {
 </script>
 
 <template>
-  <div class="relative w-full">
+  <div class="relative h-10 w-full min-w-[200px]">
     <button
-      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border py-2 pl-6 pr-2 duration-200"
+      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border px-3 py-2 duration-100 focus:outline-0"
       :class="[
         baseColorSchema?.bg?.primary,
         state.show
-          ? baseColorSchema?.border?.secondary
+          ? colorSchema?.border?.primary + ' border-2'
           : baseColorSchema?.border?.primary,
       ]"
       @click="state.show = !state.show"
