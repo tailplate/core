@@ -34,13 +34,20 @@ type Color = {
     checked?: String;
     secondary?: String;
     focus?: String;
+    focusPrimary?: String;
     peerFocus?: String;
+  };
+  outline?: {
+    focus?: String;
+    primary?: String;
   };
   shadow?: {
     hover?: String;
   };
   ring?: {
+    primary?: String;
     focus?: String;
+    focusPrimary?: String;
   };
   divide?: {
     primary?: String;

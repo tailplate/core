@@ -69,12 +69,11 @@ const changeItem = (index: number) => {
 <template>
   <div class="relative w-full">
     <button
-      class="flex w-full cursor-pointer items-center justify-between space-x-6 rounded border py-2 pl-6 pr-2 duration-200"
+      class="flex h-10 w-full cursor-pointer items-center justify-between space-x-6 rounded border px-2 ring duration-200"
       :class="[
-        baseColorSchema?.bg?.primary,
         state.show
-          ? baseColorSchema?.border?.secondary
-          : baseColorSchema?.border?.primary,
+          ? `${colorSchema?.ring?.focusPrimary} border-transparent`
+          : `${baseColorSchema?.border?.primary} ring-transparent`,
       ]"
       @click="state.show = !state.show"
     >
@@ -109,11 +108,15 @@ const changeItem = (index: number) => {
       <div
         @click="changeItem(index)"
         class="m-1 cursor-pointer rounded px-6 py-1 duration-150"
-        :class="[colorSchema?.bg?.hoverPrimary]"
+        :class="[
+          colorSchema?.bg?.hoverPrimary,
+          baseColorSchema?.text?.secondary,
+          baseColorSchema?.text?.hover,
+        ]"
         v-for="(item, index) in props.list"
         :key="item.value"
       >
-        <p class="text-sm" :class="baseColorSchema?.text?.secondary">
+        <p class="text-sm">
           {{ item.label }}
         </p>
       </div>
