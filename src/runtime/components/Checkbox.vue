@@ -69,53 +69,50 @@ const groupHover = () => {
   if (props.disabled) {
     return;
   } else {
-    return state.checkboxValue
-      ? "bg-blue-100 dark:bg-blue-900"
-      : "bg-slate-100 dark:bg-slate-800";
+    return state.checkboxValue ? colorSchema?.bg?.hover : baseColor?.bg?.hover;
   }
 };
 </script>
 
 <template>
-  <div class="group">
+  <div
+    class="flex select-none items-center space-x-2"
+    @click="props.disabled ? '' : toggle()"
+    :class="[
+      baseColor?.text?.primary,
+      props.disabled
+        ? 'cursor-not-allowed text-slate-400 opacity-70 dark:text-slate-400'
+        : 'cursor-pointer',
+    ]"
+  >
     <div
-      class="flex select-none items-center space-x-1"
-      @click="props.disabled ? '' : toggle()"
-      :class="[
-        baseColor?.text?.primary,
-        props.disabled
-          ? 'cursor-not-allowed text-slate-400 opacity-70 dark:text-slate-400'
-          : 'cursor-pointer ',
-      ]"
+      class="relative flex items-center justify-center rounded-full p-3 duration-200"
+      :class="[groupHover()]"
     >
-      <div class="relative flex items-center justify-center p-3 duration-200">
-        <input
-          type="checkbox"
-          v-model="state.checkboxValue"
-          class="z-10 h-5 w-5 appearance-none rounded border bg-white shadow-inner outline-none"
-          :class="[applyColor()]"
+      <input
+        type="checkbox"
+        v-model="state.checkboxValue"
+        class="z-10 h-5 w-5 appearance-none rounded border bg-white shadow-inner outline-none"
+        :class="[applyColor()]"
+      />
+      <svg
+        v-if="state.checkboxValue && !props.disabled"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="4"
+        stroke="currentColor"
+        class="absolute z-20 h-3 w-3 font-bold"
+        :class="colorSchema?.text?.base"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 12.75l6 6 9-13.5"
         />
-        <div
-          class="absolute inset-0 z-0 rounded-full opacity-0 duration-300 group-hover:opacity-100"
-          :class="[groupHover()]"
-        ></div>
-        <svg
-          v-if="state.checkboxValue && !props.disabled"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="4"
-          stroke="currentColor"
-          class="absolute z-20 h-3 w-3 font-bold"
-          :class="colorSchema?.text?.base"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4.5 12.75l6 6 9-13.5"
-          />
-        </svg>
-      </div>
+      </svg>
+    </div>
+    <div>
       <slot />
     </div>
   </div>

@@ -33,6 +33,7 @@ type Color = {
     primary?: String;
     checked?: String;
     secondary?: String;
+    inverted?: String;
     focus?: String;
     focusPrimary?: String;
     peerFocus?: String;

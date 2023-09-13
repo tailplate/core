@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  radioMode: { value: "default", label: "default" },
   step: 0,
   tabs: {
     default: {
@@ -119,12 +120,35 @@ const selectedBase = [
   },
 ];
 
+const radioBase = {
+  legend: "Choose a color",
+  name: "colors",
+  choices: [
+    {
+      label: "Red",
+      value: "red",
+    },
+    {
+      label: "Green",
+      value: "green",
+    },
+    {
+      label: "Blue",
+      value: "blue",
+    },
+  ],
+};
 const updateSelectedBase = () => {};
 
 const darkMode = () => (state.dark = !state.dark);
 
 const callback = (obj: { id: string; bool: boolean }) => {
   state.switchedMode[obj.id as keyof typeof state.switchedMode].done = obj.bool;
+};
+
+const callbackRadio = (obj: { value: string; label: string }) => {
+  state.radioMode.label = obj.label;
+  state.radioMode.value = obj.value;
 };
 
 const callbackToggle = (obj: { id: string; bool: boolean }) => {
@@ -1124,6 +1148,18 @@ const carousel = [
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center">
           <t-input placeholder="Name"></t-input>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center space-x-12">
+          <div class="flex w-48 flex-col space-y-4">
+            Selected color : {{ state.radioMode.value }}
+
+            <t-radio @update:selected="callbackRadio" :options="radioBase"
+              >Radio</t-radio
+            >
+          </div>
+          <t-checkbox>Checkbox</t-checkbox>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
