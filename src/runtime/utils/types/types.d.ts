@@ -28,6 +28,8 @@ type Color = {
     hoverLight?: String;
     success?: String;
     danger?: String;
+    light?: String;
+    dark?: String;
   };
   border?: {
     primary?: String;

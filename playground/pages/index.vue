@@ -200,7 +200,7 @@ const carousel = [
   <t-dark
     :dark="state.dark"
     class="relative min-h-screen p-6"
-    :class="state.dark ? 'bg-slate-900' : 'bg-white'"
+    :class="state.dark ? 'bg-black' : 'bg-white '"
   >
     <t-icon-button @click="darkMode" className="ml-auto top-6 right-6 fixed">
       <svg
@@ -1154,12 +1154,33 @@ const carousel = [
         <div class="flex items-center justify-center space-x-12">
           <div class="flex w-48 flex-col space-y-4">
             Selected color : {{ state.radioMode.value }}
-
             <t-radio @update:selected="callbackRadio" :options="radioBase"
               >Radio</t-radio
             >
           </div>
           <t-checkbox>Checkbox</t-checkbox>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
+        <div class="flex flex-col items-center justify-center space-y-6">
+          <t-card>
+            <t-card-body>
+              <t-typo variant="h4">Hello</t-typo>
+            </t-card-body>
+          </t-card>
+          <t-card color="blue">
+            <t-card-body>
+              <p class="text-lg font-semibold text-white">Hello</p>
+            </t-card-body>
+          </t-card>
+          <t-card class-name=" w-96">
+            <t-card-full className="h-48">
+              <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
+            </t-card-full>
+            <t-card-body>
+              <p class="text-lg font-semibold text-black">Hello</p>
+            </t-card-body>
+          </t-card>
         </div>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">

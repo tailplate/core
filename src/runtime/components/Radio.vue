@@ -92,7 +92,9 @@ const radioClicked = (index: number, item: object) => {
             />
           </div>
         </div>
-        <label :for="item.value">{{ item.label }}</label>
+        <label class="cursor-pointer select-none" :for="item.value">{{
+          item.label
+        }}</label>
       </div>
     </div>
   </div>

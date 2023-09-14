@@ -7,6 +7,8 @@
       "hover": "hover:text-slate-100 dark:hover:text-slate-900"
     },
     "bg": {
+      "light": "bg-white",
+      "dark": "bg-slate-800",
       "primary": "bg-white dark:bg-slate-800",
       "gray": "bg-slate-200 dark:bg-slate-600",
       "lightGray": "bg-slate-100 dark:bg-slate-600",
