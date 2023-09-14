@@ -18,6 +18,10 @@ const props = defineProps({
     type: Boolean,
     default: null,
   },
+  row: {
+    type: Boolean,
+    default: false,
+  },
   color: {
     type: String,
     default: null,
@@ -34,6 +38,10 @@ const props = defineProps({
     default: null,
   },
 });
+
+const row = () => {
+  return props.row ? "flex-row space-x-4 items-center" : "flex-col space-y-2";
+};
 
 const state: Radio = reactive({ customColor: "", checked: null });
 
@@ -63,7 +71,7 @@ const radioClicked = (index: number, item: object) => {
     >
       {{ props.options?.legend }}
     </legend>
-    <div class="flex flex-col space-y-2">
+    <div class="flex" :class="row()">
       <div
         v-for="(item, index) in props.options?.choices"
         :key="item.value"

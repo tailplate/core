@@ -1150,11 +1150,11 @@ const carousel = [
           <t-input placeholder="Name"></t-input>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
         <div class="flex items-center justify-center space-x-12">
-          <div class="flex w-48 flex-col space-y-4">
+          <div class="flex flex-col space-y-4">
             Selected color : {{ state.radioMode.value }}
-            <t-radio @update:selected="callbackRadio" :options="radioBase"
+            <t-radio row @update:selected="callbackRadio" :options="radioBase"
               >Radio</t-radio
             >
           </div>
