@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+  dismissAlert: false,
   radioMode: { value: "default", label: "default" },
   step: 0,
   tabs: {
@@ -200,7 +201,7 @@ const carousel = [
   <t-dark
     :dark="state.dark"
     class="relative min-h-screen p-6"
-    :class="state.dark ? 'bg-black' : 'bg-white '"
+    :class="state.dark ? 'bg-slate-900' : 'bg-white '"
   >
     <t-icon-button @click="darkMode" className="ml-auto top-6 right-6 fixed">
       <svg
@@ -1173,18 +1174,178 @@ const carousel = [
               <p class="text-lg font-semibold text-white">Hello</p>
             </t-card-body>
           </t-card>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+        <div class="flex items-center justify-center">
           <t-card class-name=" w-96">
             <t-card-full className="h-48">
               <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
             </t-card-full>
             <t-card-body>
-              <p class="text-lg font-semibold text-black">Hello</p>
+              <div class="flex flex-col space-y-4">
+                <t-typo variant="h4">Travel around the World</t-typo>
+                <t-typo
+                  variant="small"
+                  className="text-sm leading-relaxed  text-slate-500 dark:text-slate-200"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam recusandae consequuntur ad cumque commodi
+                  beatae!</t-typo
+                >
+                <t-button>Subscribe</t-button>
+              </div>
+            </t-card-body>
+          </t-card>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-card color="blue" class-name=" w-96">
+            <t-card-full className="h-48">
+              <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
+            </t-card-full>
+            <t-card-body>
+              <div class="flex flex-col space-y-4 text-white">
+                <h2 class="font-semibold">Travel around the World</h2>
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam recusandae consequuntur ad cumque commodi beatae!
+                </p>
+                <t-button class-name="border" color="white" variant="text"
+                  >Subscribe</t-button
+                >
+              </div>
+            </t-card-body>
+          </t-card>
+        </div>
+        <div class="flex items-center justify-center">
+          <t-card class-name=" w-96">
+            <t-card-full className="h-48">
+              <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
+            </t-card-full>
+            <t-card-body>
+              <div class="flex flex-col space-y-4">
+                <t-typo variant="h4">Travel around the World</t-typo>
+                <t-typo
+                  variant="small"
+                  className="text-sm leading-relaxed  text-slate-500 dark:text-slate-200"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam recusandae consequuntur ad cumque commodi
+                  beatae!</t-typo
+                >
+                <t-button>Subscribe</t-button>
+              </div>
             </t-card-body>
           </t-card>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
-        <div class="flex items-center justify-center">Wraper</div>
+      <div class="grid grid-cols-1 items-center justify-center gap-4 py-12">
+        <div class="flex flex-col items-center justify-center space-y-6">
+          <t-alert>
+            <t-alert-icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="white"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                />
+              </svg>
+            </t-alert-icon>
+            <t-typo variant="p" class-name="text-white"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestias, sequi!</t-typo
+            >
+          </t-alert>
+          <t-alert color="red">
+            <t-alert-icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="white"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+                />
+              </svg>
+            </t-alert-icon>
+            <t-typo variant="p" class-name="text-white"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestias, sequi!</t-typo
+            >
+          </t-alert>
+          <t-alert :dismiss="state.dismissAlert">
+            <t-alert-icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="white"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+                />
+              </svg>
+            </t-alert-icon>
+            <t-typo variant="p" class-name="text-white"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestias, sequi!</t-typo
+            >
+            <t-icon-button @click="state.dismissAlert = true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </t-icon-button>
+          </t-alert>
+          <t-alert color="green">
+            <t-typo variant="small"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestias, sequi!</t-typo
+            >
+            <t-alert-icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="h-4 w-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                />
+              </svg>
+            </t-alert-icon>
+          </t-alert>
+        </div>
       </div>
     </div>
   </t-dark>

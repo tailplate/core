@@ -64,8 +64,11 @@ const props = defineProps({
     </p>
     <p
       v-if="props.variant === 'small'"
-      :class="[props.className]"
-      class="text-sm text-slate-700 dark:text-slate-200"
+      :class="[
+        props.className
+          ? props.className
+          : 'text-sm text-slate-700 dark:text-slate-200',
+      ]"
     >
       <slot />
     </p>

@@ -25,6 +25,7 @@ type Color = {
     checked?: String;
     hover?: String;
     hoverPrimary?: String;
+    hoverSecondary?: String;
     hoverLight?: String;
     success?: String;
     danger?: String;
