@@ -9,8 +9,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "tailplate",
-    configKey: "tailplate",
+    name: "@tailplate/ui",
+    configKey: "tailplateui",
   },
   defaults: {
     color: "base",
