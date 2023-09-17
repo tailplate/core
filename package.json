@@ -1,5 +1,5 @@
 {
-  "name": "@tailplate/alpha",
+  "name": "@tailplate/ui",
   "version": "0.0.1",
   "description": "Nuxt3 components mades with TailwindCSS 3",
   "repository": "https://github.com/tailplate/core.git",
