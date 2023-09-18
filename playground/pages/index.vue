@@ -94,11 +94,6 @@ const tabs = [
     desc: "Warp hands strike colors come about Nelsons folly rutters pillage Davy Jones' Locker gabion hempen halter. Snow lee lugger rum lateen sail knave belaying pin sloop clipper wench. Topmast Jack Tar Spanish Main scuppers Blimey clap of thunder careen brigantine Cat o'nine tails grog blossom.",
   },
   {
-    label: "Activate",
-    value: "activate",
-    desc: "Knave loot bucko Pieces of Eight draft parley avast scurvy gun nipperkin. Clipper league brigantine coffer American Main gangplank heave to keelhaul nipper dead men tell no tales. Sea Legs chantey log dance the hempen jig Barbary Coast crack Jennys tea cup nipper hardtack deadlights yo-ho-ho.",
-  },
-  {
     label: "Deleted",
     value: "deleted",
     desc: "List of all deleted users.",

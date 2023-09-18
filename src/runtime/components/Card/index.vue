@@ -11,6 +11,10 @@ const props = defineProps({
     type: Boolean,
     default: null,
   },
+  row: {
+    type: Boolean,
+    default: false,
+  },
   color: {
     type: String,
     default: null,
@@ -37,8 +41,9 @@ if (props.color === null && state.customColor === "") {
 
 <template>
   <div
-    class="relative flex flex-col overflow-x-hidden rounded-lg border border-opacity-10 bg-clip-border shadow-lg"
+    class="relative flex overflow-x-hidden rounded-lg border border-opacity-10 bg-clip-border shadow-lg"
     :class="[
+      props.row ? 'flex-row' : 'flex-col',
       props.className,
       props.color
         ? colorSchema?.bg?.primary

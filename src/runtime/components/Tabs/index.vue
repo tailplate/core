@@ -36,7 +36,7 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="flex w-full flex-col space-y-4">
+  <div class="flex flex-col space-y-4">
     <slot />
   </div>
 </template>

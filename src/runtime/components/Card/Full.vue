@@ -36,7 +36,7 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="w-full" :class="props.className">
+  <div :class="props.className ? props.className : 'w-full'">
     <slot />
   </div>
 </template>
