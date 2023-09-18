@@ -43,7 +43,11 @@ if (props.color === null && state.customColor === "") {
   <nuxt-link
     :to="props.to"
     class="font-light duration-100"
-    :class="[colorSchema?.text?.hover, colorSchema?.text?.primary]"
+    :class="[
+      colorSchema?.text?.hover,
+      colorSchema?.text?.primary,
+      props.className,
+    ]"
   >
     <slot />
   </nuxt-link>

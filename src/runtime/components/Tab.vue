@@ -64,7 +64,10 @@ watch(
   <button
     @click="updateCurrentIndex()"
     class="flex items-center justify-center rounded px-4 py-2"
-    :class="state.isActive ? `${baseColorSchema?.bg?.primary} shadow` : ''"
+    :class="[
+      state.isActive ? `${baseColorSchema?.bg?.primary} shadow` : '',
+      props.className,
+    ]"
   >
     <slot />
   </button>

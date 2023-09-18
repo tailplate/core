@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 import { Color } from "../../utils/types/types";
 import json from "../../utils/colors.json";
 
@@ -25,7 +25,7 @@ const props = defineProps({
   },
 });
 
-const state = reactive({ customColor: props.color });
+const state = reactive({ customColor: props.color, row: props.row });
 
 let colorSchema: Color;
 let baseColorSchema: Color = $baseColor as Color;
@@ -37,14 +37,21 @@ if (props.color === null && state.customColor === "") {
     ? (colorSchema = json[state.customColor as keyof typeof json])
     : (colorSchema = json[props.color as keyof typeof json]);
 }
+
+watch(
+  () => props.row,
+  (row) => {
+    state.row = row;
+  }
+);
 </script>
 
 <template>
   <div
     class="relative flex overflow-x-hidden rounded-lg border border-opacity-10 bg-clip-border shadow-lg"
     :class="[
-      props.row ? 'flex-row' : 'flex-col',
-      props.className,
+      state.row ? 'flex-row' : '',
+      props.className ? props.className : 'flex-col',
       props.color
         ? colorSchema?.bg?.primary
         : 'bg-white dark:border-slate-600 dark:bg-slate-800',

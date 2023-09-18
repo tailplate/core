@@ -13,14 +13,21 @@ const props = defineProps({
     default: false,
   },
 });
+
+const invert = () => {
+  if (props.invert) {
+    return "text-slate-200 dark:text-slate-700";
+  } else {
+    return "text-slate-700 dark:text-slate-200";
+  }
+};
 </script>
 
 <template>
   <div>
     <h1
       v-if="props.variant === 'h1'"
-      :class="[props.className]"
-      class="text-5xl font-bold text-slate-800 dark:text-slate-200"
+      class="text-2xl font-bold text-slate-800 dark:text-slate-200 md:text-5xl"
     >
       <slot />
     </h1>
@@ -61,12 +68,7 @@ const props = defineProps({
     </p>
     <p
       v-if="props.variant === 'p'"
-      :class="[
-        props.className,
-        props.invert
-          ? 'text-slate-200 dark:text-slate-700'
-          : 'text-slate-700 dark:text-slate-200',
-      ]"
+      :class="[props.className ? props.className : invert()]"
     >
       <slot />
     </p>
