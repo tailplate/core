@@ -8,6 +8,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  invert: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
@@ -57,8 +61,12 @@ const props = defineProps({
     </p>
     <p
       v-if="props.variant === 'p'"
-      :class="[props.className]"
-      class="text-slate-700 dark:text-slate-200"
+      :class="[
+        props.className,
+        props.invert
+          ? 'text-slate-200 dark:text-slate-700'
+          : 'text-slate-700 dark:text-slate-200',
+      ]"
     >
       <slot />
     </p>
@@ -68,6 +76,16 @@ const props = defineProps({
         props.className
           ? props.className
           : 'text-sm text-slate-700 dark:text-slate-200',
+      ]"
+    >
+      <slot />
+    </p>
+    <p
+      v-if="props.variant === 'xs'"
+      :class="[
+        props.className
+          ? props.className
+          : 'text-xs text-slate-700 dark:text-slate-200',
       ]"
     >
       <slot />

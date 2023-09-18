@@ -17,7 +17,7 @@
       "active": "active:bg-gray-200 dark:active:bg-slate-700",
       "success": "bg-green-400",
       "danger": "bg-red-400",
-      "hover": "hover:bg-slate-100 dark:hover:bg-slate-800",
+      "hover": "hover:bg-slate-100 dark:hover:bg-slate-700",
       "hoverLight": "hover:bg-gray-200 dark:hover:bg-slate-700"
     },
     "shadow": {},
@@ -200,7 +200,7 @@
       "primary": "divide-slate-100"
     },
     "range": {
-      "primary": "[&::-webkit-slider-thumb]:bg-slate-500 [&::-webkit-slider-runnable-track]:bg-slate-300 [&::-webkit-slider-thumb]:dark:bg-slate-200 [&::-webkit-slider-runnable-track]:dark:bg-slate-500"
+      "primary": "[&::-webkit-slider-thumb]:bg-slate-100 [&::-webkit-slider-runnable-track]:bg-slate-400 [&::-webkit-slider-thumb]:dark:bg-slate-200 [&::-webkit-slider-runnable-track]:dark:bg-slate-400"
     }
   }
 }

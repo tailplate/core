@@ -37,7 +37,7 @@ if (props.color === null && state.customColor === "") {
 
 <template>
   <div
-    class="relative flex flex-col overflow-hidden rounded-lg border border-opacity-10 bg-clip-border shadow-lg"
+    class="relative flex flex-col overflow-x-hidden rounded-lg border border-opacity-10 bg-clip-border shadow-lg"
     :class="[
       props.className,
       props.color

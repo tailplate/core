@@ -36,10 +36,11 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="w-full cursor-pointer">
-    <t-typo variant="h4">
-      <slot />
-      <div class="mt-3 w-full border-t border-slate-300"></div>
-    </t-typo>
+  <div
+    class="flex w-full cursor-pointer flex-col space-y-3"
+    :class="[props.className]"
+  >
+    <slot />
+    <div class="w-full border-t border-slate-300"></div>
   </div>
 </template>

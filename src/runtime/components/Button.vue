@@ -105,7 +105,7 @@ props.group ? "" : (groupClass = "rounded-md active:scale-95 ");
 <template>
   <div :class="[width]">
     <button
-      class="relative flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
+      class="relative flex items-center justify-between space-x-3 bg-clip-border font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width, groupClass]"
     >
       <slot />

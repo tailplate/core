@@ -11,6 +11,10 @@ const props = defineProps({
     type: Boolean,
     default: null,
   },
+  scroll: {
+    type: Boolean,
+    default: true,
+  },
   color: {
     type: String,
     default: null,
@@ -36,7 +40,10 @@ if (props.color === null && state.customColor === "") {
 </script>
 
 <template>
-  <div class="h-full w-full p-6" :class="props.className">
+  <div
+    class="w-full p-6"
+    :class="[props.className, props.scroll ? 'overflow-y-scroll ' : '']"
+  >
     <slot />
   </div>
 </template>

@@ -60,7 +60,7 @@ const previous = () => {
 
 <template>
   <div
-    class="relative flex h-[600px] w-[800px] select-none flex-col items-center justify-end overflow-hidden rounded-lg"
+    class="relative flex h-[600px] w-full select-none flex-col items-center justify-end overflow-hidden rounded-lg"
   >
     <div
       class="absolute left-4 top-[50%] z-20 flex cursor-pointer items-center justify-center rounded-full p-1 text-white duration-200 hover:bg-slate-100 hover:bg-opacity-10"
