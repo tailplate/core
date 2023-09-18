@@ -62,7 +62,8 @@ const previous = () => {
   <div
     class="relative flex h-[600px] w-full select-none flex-col items-center justify-end overflow-hidden rounded-lg"
   >
-    <div
+    <button
+      aria-label="Previous Slider"
       class="absolute left-4 top-[50%] z-20 flex cursor-pointer items-center justify-center rounded-full p-1 text-white duration-200 hover:bg-slate-100 hover:bg-opacity-10"
       @click="previous()"
     >
@@ -80,7 +81,7 @@ const previous = () => {
           d="M15.75 19.5L8.25 12l7.5-7.5"
         />
       </svg>
-    </div>
+    </button>
     <div
       class="absolute z-10 flex h-full w-full"
       :style="state.moved"
@@ -107,9 +108,10 @@ const previous = () => {
         />
       </div>
     </div>
-    <div
+    <button
       class="absolute right-4 top-[50%] z-20 flex cursor-pointer items-center justify-center rounded-full p-1 text-white duration-200 hover:bg-slate-100 hover:bg-opacity-10"
       @click="next()"
+      aria-label="Next Slider"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +127,7 @@ const previous = () => {
           d="M8.25 4.5l7.5 7.5-7.5 7.5"
         />
       </svg>
-    </div>
+    </button>
     <div class="absolute bottom-4 z-20 flex space-x-2">
       <div
         v-for="(item, index) in props.items"

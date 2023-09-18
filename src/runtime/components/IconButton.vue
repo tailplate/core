@@ -16,6 +16,10 @@ const props = defineProps({
       return ["filled", "outlined", "text"].includes(value);
     },
   },
+  aria: {
+    type: String,
+    default: "Icon Button",
+  },
   size: {
     type: String,
     default: "md",
@@ -109,6 +113,7 @@ props.group ? "" : (groupClass = "rounded-md active:scale-95 ");
 <template>
   <div :class="[width]">
     <button
+      :aria-label="props.aria"
       class="flex items-center justify-between space-x-3 font-semibold uppercase duration-100 focus:shadow-none active:shadow-none"
       :class="[classes, width, groupClass]"
     >

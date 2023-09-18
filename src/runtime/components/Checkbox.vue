@@ -21,6 +21,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  aria: {
+    type: String,
+    default: "Checkbox",
+  },
   id: {
     type: String,
     default: null,
@@ -91,6 +95,7 @@ const groupHover = () => {
     >
       <input
         type="checkbox"
+        :aria-label="props.aria"
         v-model="state.checkboxValue"
         class="z-10 h-5 w-5 appearance-none rounded border bg-white shadow-inner outline-none"
         :class="[applyColor()]"
