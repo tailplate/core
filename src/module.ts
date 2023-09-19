@@ -26,7 +26,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     const runtimeDir = resolve("./runtime");
 
-    nuxt.options.css.push(resolve("./runtime/assets/css/main.css"));
+    // nuxt.options.css.push(resolve("./runtime/assets/css/main.css"));
 
     nuxt.options.runtimeConfig.public.tailplate = defu(
       nuxt.options.runtimeConfig.public.tailplate,
@@ -40,22 +40,12 @@ export default defineNuxtModule<ModuleOptions>({
       exposeConfig: true,
       config: {
         darkMode: "class",
-        plugins: [
-          require("@tailwindcss/forms")({ strategy: "class" }),
-          require("@tailwindcss/aspect-ratio"),
-          require("@tailwindcss/typography"),
-          require("@tailwindcss/container-queries"),
-        ],
         content: {
           files: [
             resolve(runtimeDir, "components/**/*.{vue,mjs,ts}"),
-            resolve(runtimeDir, "*.{mjs,js,ts}"),
+            resolve(runtimeDir, "utils/**/*.{vue,mjs,ts,json}"),
+            resolve(runtimeDir, "*.{mjs,js,ts,json}"),
           ],
-          transform: {
-            vue: (content: any) => {
-              return content.replaceAll(/(?:\r\n|\r|\n)/g, " ");
-            },
-          },
         },
       },
     });

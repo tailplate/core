@@ -184,7 +184,7 @@ const updateTabsIndex = (index: number) => {
 };
 
 const carousel = [
-  { src: "/img/1.jpg", alt: "Test", type: "image" },
+  { src: "./img/1.jpg", alt: "Test", type: "image" },
   { src: "/img/2.jpg", alt: "Test", type: "image" },
   { src: "/img/3.jpg", alt: "Test", type: "image" },
   { src: "/videos/video.mp4", alt: "Test", type: "video" },
@@ -764,10 +764,8 @@ const carousel = [
           </t-collapse>
         </div>
       </div>
-      <div class="grid grid-cols-1 items-center justify-center gap-4">
-        <div class="flex items-center justify-center">
-          <t-carousel :items="carousel"></t-carousel>
-        </div>
+      <div class="grid w-full grid-cols-1 items-center justify-center gap-4">
+        <t-carousel :items="carousel"></t-carousel>
       </div>
       <div class="grid grid-cols-3 items-center justify-center gap-4">
         <div class="flex items-center justify-center">
@@ -1171,9 +1169,9 @@ const carousel = [
           </t-card>
         </div>
       </div>
-      <div class="grid grid-cols-3 items-center justify-center gap-4 py-12">
+      <div class="grid grid-cols-3 justify-center gap-4 py-12">
         <div class="flex items-center justify-center">
-          <t-card class-name=" w-96">
+          <t-card class="w-96">
             <t-card-full className="h-48">
               <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
             </t-card-full>
@@ -1194,7 +1192,7 @@ const carousel = [
           </t-card>
         </div>
         <div class="flex items-center justify-center">
-          <t-card color="blue" class-name=" w-96">
+          <t-card color="blue" class="h-full w-96">
             <t-card-full className="h-48">
               <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
             </t-card-full>
@@ -1213,7 +1211,7 @@ const carousel = [
           </t-card>
         </div>
         <div class="flex items-center justify-center">
-          <t-card class-name=" w-96">
+          <t-card class="w-96">
             <t-card-full className="h-48">
               <img class="h-full w-full object-cover" src="/img/1.jpg" alt="" />
             </t-card-full>

@@ -60,7 +60,7 @@ const previous = () => {
 
 <template>
   <div
-    class="relative flex h-[600px] w-full select-none flex-col items-center justify-end overflow-hidden rounded-lg"
+    class="carousel relative flex h-[600px] min-h-full w-full select-none items-center justify-end overflow-hidden rounded-lg bg-blue-300"
   >
     <button
       aria-label="Previous Slider"
@@ -128,7 +128,7 @@ const previous = () => {
         />
       </svg>
     </button>
-    <div class="absolute bottom-4 z-20 flex space-x-2">
+    <div class="absolute bottom-4 left-[50%] z-20 flex space-x-2">
       <div
         v-for="(item, index) in props.items"
         :key="item.src"
@@ -136,7 +136,7 @@ const previous = () => {
         :class="
           state.currentSlide === index + 1
             ? 'w-8 opacity-100'
-            : ' w-2 opacity-50'
+            : 'w-2 opacity-50'
         "
       ></div>
     </div>
