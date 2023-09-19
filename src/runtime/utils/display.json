@@ -2,5 +2,5 @@
   "flex-display-sm": "flex-col sm:flex-row",
   "flex-display-md": "flex-col md:flex-row",
   "xl-h-auto": "xl:h-auto",
-  "h-[600px]": "h-[600px]"
+  "h-[600px]": "h-[600px] space-x-6 sm:space-x-0 hidden xl:block"
 }
