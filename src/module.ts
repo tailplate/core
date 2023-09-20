@@ -25,16 +25,15 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url);
 
     const runtimeDir = resolve("./runtime");
+    nuxt.options.build.transpile.push(runtimeDir);
+    nuxt.options.build.transpile.push("@tailplate/ui");
 
     // nuxt.options.css.push(resolve("./runtime/assets/css/main.css"));
 
-    nuxt.options.runtimeConfig.public.tailplate = defu(
-      nuxt.options.runtimeConfig.public.tailplate,
-      {
-        color: options.color,
-        dark: options.dark,
-      }
-    );
+    nuxt.options.runtimeConfig.public.tailplate = defu({
+      color: options.color,
+      dark: options.dark,
+    });
 
     await installModule("@nuxtjs/tailwindcss", {
       exposeConfig: true,
